@@ -12,14 +12,13 @@ struct ContentView: View {
 		VStack {
 			Text("TODO List").font(.headline)
 			List {
-				Label("Your account", systemImage: "checkmark")
-				Text("Item 1")
-				Text("Item 2")
-				Text("Item 3")
-				Text("Add Task")
+				Label {
+					Text("Task 1")
+				} icon: {
+					Label("", systemImage: "checkmark")			.foregroundStyle(.gray)
+				}
 			}
 			.listStyle(InsetGroupedListStyle())
-			.foregroundStyle(.gray)
 		}
 	}
 }
