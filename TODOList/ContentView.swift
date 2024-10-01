@@ -8,15 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
+	var body: some View {
+		VStack {
+			Text("TODO List").font(.headline)
+			List {
+				Label("Your account", systemImage: "checkmark")
+				Text("Item 1")
+				Text("Item 2")
+				Text("Item 3")
+				Text("Add Task")
+			}
+			.listStyle(InsetGroupedListStyle())
+			.foregroundStyle(.gray)
+		}
+	}
 }
 
 struct ContentView_Previews: PreviewProvider {
