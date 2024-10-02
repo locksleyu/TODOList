@@ -66,7 +66,7 @@ struct ContentView: View {
 						Label {
 							Text(item.title)
 						} icon: {
-							if(item.id == -1) {
+							if(item.id != -1) {
 								Label("", systemImage:"checkmark").foregroundStyle(.gray)
 							}
 							else {
