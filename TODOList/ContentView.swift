@@ -74,14 +74,17 @@ struct ContentView: View {
 							}
 						}
 						.swipeActions {
-							Button (action:
-										{ removeItemWithID(id: item.id)
-								
-							}) {
+							Button (action:{ removeItemWithID(id: item.id) }) {
 								  Label("Delete", systemImage: "minus.circle")
 							  }
+							  .tint(.red)
+							  Button (action:{  }) {
+								  Label("Edit", systemImage: "pencil")
+							  }
 							  .tint(.blue)
+							
 							}
+						
 					}
 					//.onDelete { indexSet in
 					//  todoItems.remove(atOffsets: indexSet)
