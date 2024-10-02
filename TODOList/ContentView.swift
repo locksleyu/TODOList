@@ -150,7 +150,10 @@ struct ContentView: View {
 				HStack {
 					Spacer()
 					Button(action: {
-						showEditView = false
+						showEditView = false // dismiss
+						// TODO: remove workaround
+						todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
+						todoItems.removeLast()
 					}) {
 						Image(systemName: "xmark.circle").padding(20)
 					}
@@ -181,6 +184,7 @@ struct ContentView: View {
 			print("found!")
 			
 			todoItems[index].completed = !todoItems[index].completed
+			// TODO: remove workaround
 			todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
 			todoItems.removeLast()
 		}
