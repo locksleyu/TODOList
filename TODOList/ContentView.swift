@@ -75,11 +75,11 @@ struct ContentView: View {
 				do {
 					let decodedData = try JSONDecoder().decode([TodoItem].self, from: data)
 					// get only 5 items at most
-					if ( decodedData.count <= 5) {
+					if ( decodedData.count <= 2) { // TODO: change to 5 before submit!!
 						self.todoItems = decodedData
 					}
 					else {
-						self.todoItems = Array(decodedData[0...4])
+						self.todoItems = Array(decodedData[0...1]) // TODO: change to 4 before submit!!
 					}
 					// TODO: find a cleaner way to integrate this special item (merge Lists)
 					self.todoItems.append(TodoItem(userId: 0, id: -1, title: "Add task", completed: false))
