@@ -58,8 +58,8 @@ struct ContentView: View {
 			task.resume()
 		}
 	var body: some View {
-		VStack {
-			Text("TODO List").font(.headline)
+		NavigationStack {
+			//Text("TODO List").font(.headline)
 			List {
 				Section {
 					ForEach (todoItems) { item in
@@ -82,21 +82,20 @@ struct ContentView: View {
 								  Label("Edit", systemImage: "pencil")
 							  }
 							  .tint(.blue)
-							
 							}
-						
 					}
-					//.onDelete { indexSet in
-					//  todoItems.remove(atOffsets: indexSet)
-					//}
+					//.onDelete { todoItems.remove(atOffsets: $0) }
 
 				}
 			}
+			//.toolbar {
+			//	EditButton()
+			//}
 			.onAppear {
 				fetchRemoteData()
 			}
-		
 		}
+		
 	}
 	func removeItemWithID(id: Int)
 	{
