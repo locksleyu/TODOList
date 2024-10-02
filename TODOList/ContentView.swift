@@ -32,6 +32,8 @@ struct ContentView: View {
 	@State private var todoItems: [TodoItem] = []
 	@State private var showEditView: Bool = false
 	private func fetchRemoteData() {
+			print("FETCH REMOTE DATA!")
+
 			let url = URL(string: "https://jsonplaceholder.typicode.com/todos?userId=3")!
 			var request = URLRequest(url: url)
 			request.httpMethod = "GET"  // optional
@@ -84,7 +86,8 @@ struct ContentView: View {
 						}
 						
 						Button(item.title, action: {
-							updateCompleteStateOfItem(item: item, completed: !item.completed)
+							var _ = print("before = \(item.completed), now = \(!item.completed), id = \(item.id)")
+							updateCompleteStateOfItem(id: item.id)
 							//todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
 						})
 					}
@@ -133,26 +136,19 @@ struct ContentView: View {
 		print("remove me!")
 		todoItems.removeAll() {$0.id == id}
 	}
-	func updateCompleteStateOfItem(item: TodoItem, completed: Bool)
+	func updateCompleteStateOfItem(id: Int)
 	{
-		if let index = todoItems.firstIndex(of: item) {
-			print("found")
-			// these don't work
-			//todoItems[index].completed = completed
-			//todoItems[index].setCompleted(completedValue: completed)
-			//todoItems.indices.filter { todoItems[$0].id == item.id }
-			//				  .forEach { todoItems[$0].completed = true }
-			
+		print("previous items = \(todoItems)")
+
 			let newTodoItems = todoItems.map({ (myItem) -> TodoItem in
-				if myItem.id == item.id {
+				if myItem.id == id {
 					var newItem = myItem
-					newItem.completed = completed;
+					newItem.completed = !myItem.completed
 					return newItem
 				} else {
 					return myItem
 				}
 			})
-			print("new one = \(newTodoItems)")
 			
 			todoItems.removeAll();
 			newTodoItems.forEach { item in
@@ -160,12 +156,10 @@ struct ContentView: View {
 			}
 			//todoItems = newTodoItems
 			
-			print("after = \(todoItems[index].completed) [set to \(completed)")
-		}
-		else {
-			print("not found!")
-		}
-		print("new list = \(todoItems)")
+			print("new items = \(todoItems)")
+
+			//print("after = \(todoItems[index].completed) [set to \(completed)")
+
 	}
 }
 
