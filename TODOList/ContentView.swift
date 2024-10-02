@@ -25,6 +25,7 @@ class TodoItem: Codable, Identifiable
 	}
 }
 
+/*
 struct TodoItem2: Codable, Identifiable {
 	let userId: Int
 	let id: Int
@@ -42,6 +43,7 @@ struct TodoItem2: Codable, Identifiable {
 	}
 	var completed: Bool
 }
+*/
 
 extension TodoItem: Equatable {
   static func ==(first: TodoItem, second: TodoItem) -> Bool {
@@ -110,7 +112,7 @@ struct ContentView: View {
 						
 						Button(item.title, action: {
 							var _ = print("before = \(item.completed), now = \(!item.completed), id = \(item.id)")
-							updateCompleteStateOfItem(id: item.id)
+							updateCompleteStateOfItem(item: item)
 							//todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
 						})
 					}
@@ -170,30 +172,19 @@ struct ContentView: View {
 		print("remove me!")
 		todoItems.removeAll() {$0.id == id}
 	}
-	func updateCompleteStateOfItem(id: Int)
+	func updateCompleteStateOfItem(item: TodoItem)
 	{
+	
 		print("previous items = \(todoItems)")
 
-			let newTodoItems = todoItems.map({ (myItem) -> TodoItem in
-				if myItem.id == id {
-					var newItem = myItem
-					newItem.completed = !myItem.completed
-					return newItem
-				} else {
-					return myItem
-				}
-			})
+		if let index = todoItems.firstIndex(of: item) {
+			print("found!")
 			
-			todoItems.removeAll();
-			newTodoItems.forEach { item in
-				todoItems.append(item)
-			}
-			//todoItems = newTodoItems
-			
+			todoItems[index].completed = !todoItems[index].completed
+			todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
+			todoItems.removeLast()
+		}
 			print("new items = \(todoItems)")
-
-			//print("after = \(todoItems[index].completed) [set to \(completed)")
-
 	}
 }
 
