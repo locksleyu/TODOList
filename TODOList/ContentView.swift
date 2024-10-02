@@ -56,6 +56,8 @@ struct ContentView: View {
 	@State private var showEditView: Bool = false
 	@State private var showAddView: Bool = false
 	@State private var indexOfItemToEdit: Int = 0
+	@State private var newItemTitle: String = ""
+	@State private var nextId: Int = 100 // todo, set properly
 	private func fetchRemoteData() {
 			print("FETCH REMOTE DATA!")
 
@@ -195,7 +197,7 @@ struct ContentView: View {
 		ZStack(alignment: .center) {
 			VStack {
 				Spacer()
-				TextField("AddItem", text: $todoItems[indexOfItemToEdit].title, axis: .vertical)
+				TextField("Add item details here", text: $newItemTitle, axis: .vertical)
 					.padding(30)
 					.padding(.top, 40)
 					.background(Color.gray)
@@ -210,10 +212,10 @@ struct ContentView: View {
 				HStack {
 					Spacer()
 					Button(action: {
-						showEditView = false // dismiss
-						// TODO: remove workaround
-						todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
-						todoItems.removeLast()
+						todoItems.append(TodoItem(userId: 3, id: nextId, title: newItemTitle, completed: false))
+						nextId += 1
+						showAddView = false // dismiss
+
 					}) {
 						Image(systemName: "xmark.circle").padding(20)
 					}
