@@ -73,10 +73,20 @@ struct ContentView: View {
 								Label("", systemImage:"plus").foregroundStyle(.gray)
 							}
 						}
+						.swipeActions {
+							Button (action:
+										{ removeItemWithID(id: item.id)
+								
+							}) {
+								  Label("Delete", systemImage: "minus.circle")
+							  }
+							  .tint(.blue)
+							}
 					}
-					.onDelete { indexSet in
-					  todoItems.remove(atOffsets: indexSet)
-					}
+					//.onDelete { indexSet in
+					//  todoItems.remove(atOffsets: indexSet)
+					//}
+
 				}
 			}
 			.onAppear {
@@ -84,6 +94,10 @@ struct ContentView: View {
 			}
 		
 		}
+	}
+	func removeItemWithID(id: Int)
+	{
+		todoItems.removeAll() {$0.id == id}
 	}
 }
 /*
