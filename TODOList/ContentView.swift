@@ -41,8 +41,13 @@ struct ContentView: View {
 
 				do {
 					let decodedData = try JSONDecoder().decode([TodoItem].self, from: data)
-					// Assigning the data to the array
-					self.todoItems = decodedData
+					// get only 5 items at most
+					if ( decodedData.count <= 5) {
+						self.todoItems = decodedData
+					}
+					else {
+						self.todoItems = Array(decodedData[0...4])
+					}
 				} catch let jsonError {
 					print("Failed to decode json", jsonError)
 				}
