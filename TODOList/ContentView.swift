@@ -74,6 +74,9 @@ struct ContentView: View {
 							}
 						}
 					}
+					.onDelete { indexSet in
+					  todoItems.remove(atOffsets: indexSet)
+					}
 				}
 			}
 			.onAppear {
