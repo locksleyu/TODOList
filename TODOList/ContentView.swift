@@ -24,6 +24,7 @@ struct TodoItem: Codable, Identifiable {
 
 struct ContentView: View {
 	@State private var todoItems: [TodoItem] = []
+	@State private var showEditView: Bool = false
 	private func fetchRemoteData() {
 			let url = URL(string: "https://jsonplaceholder.typicode.com/todos?userId=3")!
 			var request = URLRequest(url: url)
@@ -70,14 +71,14 @@ struct ContentView: View {
 							Label("", systemImage:"plus").foregroundStyle(.gray)
 						}
 						
-						Button(item.title, action: {print("x")})
+						Button(item.title, action: {})
 					}
 					.swipeActions {
 						Button (action:{ removeItemWithID(id: item.id) }) {
 							  Label("Delete", systemImage: "minus.circle")
 						  }
 						  .tint(.red)
-						  Button (action:{  }) {
+						  Button (action:{showEditView = true  }) {
 							  Label("Edit", systemImage: "pencil")
 						  }
 						  .tint(.blue)
@@ -90,8 +91,27 @@ struct ContentView: View {
 			.onAppear {
 				fetchRemoteData()
 			}
+			.sheet(isPresented: $showEditView) {
+				editView
+			}
 		}
 		
+	}
+	var editView: some View {
+		ZStack(alignment: .topTrailing) {
+			VStack {
+				HStack {
+					Spacer()
+					Button(action: {
+						showEditView = false
+					}) {
+						Image(systemName: "xmark.circle").padding(20)
+					}
+				}
+				.padding(5)
+				Spacer()
+			}
+		}
 	}
 	func removeItemWithID(id: Int)
 	{
