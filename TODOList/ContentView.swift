@@ -48,6 +48,8 @@ struct ContentView: View {
 					else {
 						self.todoItems = Array(decodedData[0...4])
 					}
+					// TODO: find a cleaner way to integrate this special item (merge Lists)
+					self.todoItems.append(TodoItem(userId: 0, id: -1, title: "Add task", completed: false))
 				} catch let jsonError {
 					print("Failed to decode json", jsonError)
 				}
@@ -58,21 +60,40 @@ struct ContentView: View {
 	var body: some View {
 		VStack {
 			Text("TODO List").font(.headline)
-			List (todoItems) { item in
-				Label {
-					Text(item.title)
-				} icon: {
-					Label("", systemImage: "checkmark")
-						.foregroundStyle(.gray)
+			List {
+				Section {
+					ForEach (todoItems) { item in
+						Label {
+							Text(item.title)
+						} icon: {
+							if(item.id == -1) {
+								Label("", systemImage:"checkmark").foregroundStyle(.gray)
+							}
+							else {
+								Label("", systemImage:"plus").foregroundStyle(.gray)
+							}
+						}
+					}
 				}
 			}
-			.listStyle(InsetGroupedListStyle())
 			.onAppear {
 				fetchRemoteData()
 			}
+		
 		}
 	}
 }
+/*
+ +
+ List {
+	 Label {
+		 Text("Add task")
+	 } icon: {
+		 Label("", systemImage: "plus")
+			 .foregroundStyle(.gray)
+	 }
+ }
+ */
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
