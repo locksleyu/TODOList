@@ -52,9 +52,9 @@ extension TodoItem: Equatable {
 }
 
 struct ContentView: View {
-	@State private var test: String = "TESTY123"
 	@State private var todoItems: [TodoItem] = []
 	@State private var showEditView: Bool = false
+	@State private var indexOfItemToEdit: Int = 0
 	private func fetchRemoteData() {
 			print("FETCH REMOTE DATA!")
 
@@ -121,7 +121,16 @@ struct ContentView: View {
 							  Label("Delete", systemImage: "minus.circle")
 						  }
 						  .tint(.red)
-						  Button (action:{showEditView = true}) {
+						  Button (action:{
+							  if let index = todoItems.firstIndex(of: item) {
+								  print("found: \(index)")
+								  indexOfItemToEdit = index
+							  }
+							  else {
+								  print("not found!")
+							  }
+							  showEditView = true
+						  }) {
 							  Label("Edit", systemImage: "pencil")
 						  }
 						  .tint(.blue)
@@ -162,8 +171,7 @@ struct ContentView: View {
 				Spacer()
 			}
 			VStack {
-				//TextField("testy", text: $test, axis: .vertical)
-				TextField("testy", text: $todoItems[0].title, axis: .vertical)
+				TextField("EditItem", text: $todoItems[indexOfItemToEdit].title, axis: .vertical)
 					.padding(30)
 					.padding(.top, 40)
 				Spacer()
