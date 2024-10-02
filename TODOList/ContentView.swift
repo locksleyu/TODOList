@@ -151,6 +151,15 @@ struct ContentView: View {
 	}
 	var editView: some View {
 		ZStack(alignment: .center) {
+			VStack {
+				Spacer()
+				TextField("EditItem", text: $todoItems[indexOfItemToEdit].title, axis: .vertical)
+					.padding(30)
+					.padding(.top, 40)
+					.background(Color.gray)
+				Spacer()
+				Spacer()
+			}
 			VStack(alignment: .center) {
 				Text("Edit item").padding(30).bold()
 				Spacer()
@@ -168,12 +177,6 @@ struct ContentView: View {
 					}
 				}
 				.padding(5)
-				Spacer()
-			}
-			VStack {
-				TextField("EditItem", text: $todoItems[indexOfItemToEdit].title, axis: .vertical)
-					.padding(30)
-					.padding(.top, 40)
 				Spacer()
 			}
 		}
