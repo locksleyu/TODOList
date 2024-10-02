@@ -61,31 +61,27 @@ struct ContentView: View {
 		NavigationStack {
 			//Text("TODO List").font(.headline)
 			List {
-				Section {
-					ForEach (todoItems) { item in
-						Label {
-							Text(item.title)
-						} icon: {
-							if(item.id != -1) {
-								Label("", systemImage:"checkmark").foregroundStyle(.gray)
-							}
-							else {
-								Label("", systemImage:"plus").foregroundStyle(.gray)
-							}
+				ForEach (todoItems) { item in
+					HStack {
+						if(item.id != -1) {
+							Label("", systemImage:"checkmark").foregroundStyle(.gray)
 						}
-						.swipeActions {
-							Button (action:{ removeItemWithID(id: item.id) }) {
-								  Label("Delete", systemImage: "minus.circle")
-							  }
-							  .tint(.red)
-							  Button (action:{  }) {
-								  Label("Edit", systemImage: "pencil")
-							  }
-							  .tint(.blue)
-							}
+						else {
+							Label("", systemImage:"plus").foregroundStyle(.gray)
+						}
+						
+						Button(item.title, action: {print("x")})
 					}
-					//.onDelete { todoItems.remove(atOffsets: $0) }
-
+					.swipeActions {
+						Button (action:{ removeItemWithID(id: item.id) }) {
+							  Label("Delete", systemImage: "minus.circle")
+						  }
+						  .tint(.red)
+						  Button (action:{  }) {
+							  Label("Edit", systemImage: "pencil")
+						  }
+						  .tint(.blue)
+						}
 				}
 			}
 			//.toolbar {
@@ -99,6 +95,7 @@ struct ContentView: View {
 	}
 	func removeItemWithID(id: Int)
 	{
+		print("remove me!")
 		todoItems.removeAll() {$0.id == id}
 	}
 }
