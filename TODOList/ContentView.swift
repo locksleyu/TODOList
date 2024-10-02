@@ -54,6 +54,7 @@ extension TodoItem: Equatable {
 struct ContentView: View {
 	@State private var todoItems: [TodoItem] = []
 	@State private var showEditView: Bool = false
+	@State private var showAddView: Bool = false
 	@State private var indexOfItemToEdit: Int = 0
 	private func fetchRemoteData() {
 			print("FETCH REMOTE DATA!")
@@ -111,9 +112,14 @@ struct ContentView: View {
 						}
 						
 						Button(item.title, action: {
-							var _ = print("before = \(item.completed), now = \(!item.completed), id = \(item.id)")
-							updateCompleteStateOfItem(item: item)
-							//todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
+							if (item.id == -1) { // add item
+								showAddView = true;
+							}
+							else {
+								var _ = print("before = \(item.completed), now = \(!item.completed), id = \(item.id)")
+								updateCompleteStateOfItem(item: item)
+								//todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
+							}
 						})
 					}
 					.swipeActions {
@@ -130,6 +136,7 @@ struct ContentView: View {
 								  print("not found!")
 							  }
 							  showEditView = true
+							  
 						  }) {
 							  Label("Edit", systemImage: "pencil")
 						  }
@@ -145,6 +152,9 @@ struct ContentView: View {
 			}
 			.sheet(isPresented: $showEditView) {
 				editView
+			}
+			.sheet(isPresented: $showAddView) {
+				addView
 			}
 		}
 		
@@ -162,6 +172,38 @@ struct ContentView: View {
 			}
 			VStack(alignment: .center) {
 				Text("Edit item").padding(30).bold()
+				Spacer()
+			}
+			VStack {
+				HStack {
+					Spacer()
+					Button(action: {
+						showEditView = false // dismiss
+						// TODO: remove workaround
+						todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
+						todoItems.removeLast()
+					}) {
+						Image(systemName: "xmark.circle").padding(20)
+					}
+				}
+				.padding(5)
+				Spacer()
+			}
+		}
+	}
+	var addView: some View {
+		ZStack(alignment: .center) {
+			VStack {
+				Spacer()
+				TextField("AddItem", text: $todoItems[indexOfItemToEdit].title, axis: .vertical)
+					.padding(30)
+					.padding(.top, 40)
+					.background(Color.gray)
+				Spacer()
+				Spacer()
+			}
+			VStack(alignment: .center) {
+				Text("Add item").padding(30).bold()
 				Spacer()
 			}
 			VStack {
