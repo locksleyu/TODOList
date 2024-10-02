@@ -8,18 +8,24 @@
 import SwiftUI
 
 // https://jsonplaceholder.typicode.com/todos
-/*
-"userId": 1,
-  "id": 1,
-  "title": "delectus aut autem",
-  "completed": false
-*/
+
 
 struct TodoItem: Codable, Identifiable {
 	let userId: Int
 	let id: Int
-	let title: String
-	let completed: Bool
+	var title: String
+	var completed: Bool
+	
+	//mutating func setCompleted(completedValue: Bool)
+	//{
+	//	completed = completedValue;
+	//}
+}
+
+extension TodoItem: Equatable {
+  static func ==(first: TodoItem, second: TodoItem) -> Bool {
+	  return first.id == second.id // assume ID is unique
+  }
 }
 
 struct ContentView: View {
@@ -65,20 +71,29 @@ struct ContentView: View {
 				ForEach (todoItems) { item in
 					HStack {
 						if(item.id != -1) {
-							Label("", systemImage:"checkmark").foregroundStyle(.gray)
+							var _ = print("id = \(item.id), completed = \(item.completed)")
+							if (item.completed) {
+								Label("", systemImage:"checkmark").foregroundStyle(.green)
+							}
+							else {
+								Label("", systemImage:"checkmark").foregroundStyle(.gray)
+							}
 						}
 						else {
 							Label("", systemImage:"plus").foregroundStyle(.gray)
 						}
 						
-						Button(item.title, action: {})
+						Button(item.title, action: {
+							updateCompleteStateOfItem(item: item, completed: !item.completed)
+							//todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
+						})
 					}
 					.swipeActions {
 						Button (action:{ removeItemWithID(id: item.id) }) {
 							  Label("Delete", systemImage: "minus.circle")
 						  }
 						  .tint(.red)
-						  Button (action:{showEditView = true  }) {
+						  Button (action:{showEditView = true}) {
 							  Label("Edit", systemImage: "pencil")
 						  }
 						  .tint(.blue)
@@ -118,18 +133,41 @@ struct ContentView: View {
 		print("remove me!")
 		todoItems.removeAll() {$0.id == id}
 	}
+	func updateCompleteStateOfItem(item: TodoItem, completed: Bool)
+	{
+		if let index = todoItems.firstIndex(of: item) {
+			print("found")
+			// these don't work
+			//todoItems[index].completed = completed
+			//todoItems[index].setCompleted(completedValue: completed)
+			//todoItems.indices.filter { todoItems[$0].id == item.id }
+			//				  .forEach { todoItems[$0].completed = true }
+			
+			let newTodoItems = todoItems.map({ (myItem) -> TodoItem in
+				if myItem.id == item.id {
+					var newItem = myItem
+					newItem.completed = completed;
+					return newItem
+				} else {
+					return myItem
+				}
+			})
+			print("new one = \(newTodoItems)")
+			
+			todoItems.removeAll();
+			newTodoItems.forEach { item in
+				todoItems.append(item)
+			}
+			//todoItems = newTodoItems
+			
+			print("after = \(todoItems[index].completed) [set to \(completed)")
+		}
+		else {
+			print("not found!")
+		}
+		print("new list = \(todoItems)")
+	}
 }
-/*
- +
- List {
-	 Label {
-		 Text("Add task")
-	 } icon: {
-		 Label("", systemImage: "plus")
-			 .foregroundStyle(.gray)
-	 }
- }
- */
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
