@@ -115,6 +115,7 @@ struct ContentView: View {
 						
 						Button(item.title, action: {
 							if (item.id == -1) { // add item
+								newItemTitle = ""
 								showAddView = true;
 							}
 							else {
@@ -212,8 +213,11 @@ struct ContentView: View {
 				HStack {
 					Spacer()
 					Button(action: {
-						todoItems.append(TodoItem(userId: 3, id: nextId, title: newItemTitle, completed: false))
-						nextId += 1
+						if (newItemTitle != "") {
+							let newItem = TodoItem(userId: 3, id: nextId, title: newItemTitle, completed: false)
+							todoItems.insert(newItem, at: todoItems.count-1)
+							nextId += 1
+						}
 						showAddView = false // dismiss
 
 					}) {
