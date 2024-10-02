@@ -10,16 +10,37 @@ import SwiftUI
 // https://jsonplaceholder.typicode.com/todos
 
 
-struct TodoItem: Codable, Identifiable {
+class TodoItem: Codable, Identifiable
+{
 	let userId: Int
 	let id: Int
 	var title: String
 	var completed: Bool
-	
-	//mutating func setCompleted(completedValue: Bool)
-	//{
-	//	completed = completedValue;
-	//}
+	init (userId: Int, id: Int, title: String, completed: Bool)
+	{
+		self.userId = userId;
+		self.id = id;
+		self.title = title;
+		self.completed = completed;
+	}
+}
+
+struct TodoItem2: Codable, Identifiable {
+	let userId: Int
+	let id: Int
+	var title: String
+	var myTitle: String
+	{
+		get {
+			print("get returns \(title) [\(self)]")
+			return title
+		}
+		set (n) {
+			print("set sets \(n) [\(self)]")
+			title = n
+		}
+	}
+	var completed: Bool
 }
 
 extension TodoItem: Equatable {
@@ -29,6 +50,7 @@ extension TodoItem: Equatable {
 }
 
 struct ContentView: View {
+	@State private var test: String = "TESTY123"
 	@State private var todoItems: [TodoItem] = []
 	@State private var showEditView: Bool = false
 	private func fetchRemoteData() {
@@ -59,6 +81,7 @@ struct ContentView: View {
 					}
 					// TODO: find a cleaner way to integrate this special item (merge Lists)
 					self.todoItems.append(TodoItem(userId: 0, id: -1, title: "Add task", completed: false))
+					
 				} catch let jsonError {
 					print("Failed to decode json", jsonError)
 				}
@@ -134,6 +157,7 @@ struct ContentView: View {
 				Spacer()
 			}
 			VStack {
+				//TextField("testy", text: $test, axis: .vertical)
 				TextField("testy", text: $todoItems[0].title, axis: .vertical)
 					.padding(30)
 					.padding(.top, 40)
