@@ -18,7 +18,7 @@ struct HomeView: View {
 			{
 				showingMain = true
 			}
-			.sheet(isPresented: $showingMain) {
+			.fullScreenCover(isPresented: $showingMain) {
 				ContentView()
 			}
 			.padding(30)
