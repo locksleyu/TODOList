@@ -17,9 +17,9 @@ struct TodoItem: Codable, Identifiable {
 }
 
 extension TodoItem: Equatable {
-  static func ==(first: TodoItem, second: TodoItem) -> Bool {
-	  return first.id == second.id && first.title == second.title && first.userId == second.userId && first.completed == second.completed
-  }
+	static func ==(first: TodoItem, second: TodoItem) -> Bool {
+		return first.id == second.id && first.title == second.title && first.userId == second.userId && first.completed == second.completed
+	}
 }
 
 struct ContentView: View {
@@ -28,7 +28,7 @@ struct ContentView: View {
 	@State private var showAddView: Bool = false
 	@State private var indexOfItemToEdit: Int = 0
 	@State private var newItemTitle: String = ""
-	@State private var nextId: Int = 100 // todo, set properly
+	@State private var nextId: Int = 100 // TODO: set properly
 	
 	let filterOptions = ["All Tasks", "Active Tasks", "Completed Tasks"]
 	@State private var filterSelection = "Active Tasks"
@@ -36,56 +36,49 @@ struct ContentView: View {
 	@State private var showingHome: Bool = false
 	
 	private func fetchRemoteData() {
-			print("FETCH REMOTE DATA!")
-
-			let url = URL(string: "https://jsonplaceholder.typicode.com/todos?userId=3")!
-			var request = URLRequest(url: url)
-			request.httpMethod = "GET"  // optional
-			request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-			let task = URLSession.shared.dataTask(with: request){ data, response, error in
-				if let error = error {
-					print("Error while fetching data:", error)
-					return
-				}
-
-				guard let data = data else {
-					return
-				}
-
-				do {
-					let decodedData = try JSONDecoder().decode([TodoItem].self, from: data)
-					// get only 5 items at most
-					if ( decodedData.count <= 2) { // TODO: change to 5 before submit!!
-						self.todoItems = decodedData
-					}
-					else {
-						self.todoItems = Array(decodedData[0...1]) // TODO: change to 4 before submit!!
-					}
-					// TODO: find a cleaner way to integrate this special item (merge Lists)
-					self.todoItems.append(TodoItem(userId: 0, id: -1, title: "Add task", completed: false))
-					
-				} catch let jsonError {
-					print("Failed to decode json", jsonError)
-				}
+		let url = URL(string: "https://jsonplaceholder.typicode.com/todos?userId=3")!
+		var request = URLRequest(url: url)
+		request.httpMethod = "GET"  // optional
+		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+		let task = URLSession.shared.dataTask(with: request){ data, response, error in
+			if let error = error {
+				print("Error while fetching data:", error)
+				return
 			}
-
-			task.resume()
+			
+			guard let data = data else {
+				return
+			}
+			
+			do {
+				let decodedData = try JSONDecoder().decode([TodoItem].self, from: data)
+				// get only 5 items at most
+				if ( decodedData.count <= 2) { // TODO: change to 5 before submit!!
+					self.todoItems = decodedData
+				}
+				else {
+					self.todoItems = Array(decodedData[0...1]) // TODO: change to 4 before submit!!
+				}
+				// TODO: find a cleaner way to integrate this special item (merge Lists)
+				self.todoItems.append(TodoItem(userId: 0, id: -1, title: "Add task", completed: false))
+				
+			} catch let jsonError {
+				print("Failed to decode json", jsonError)
+			}
 		}
+		
+		task.resume()
+	}
 	var body: some View {
 		NavigationStack {
-			//Text("TODO List").font(.headline)
 			Picker("Filter", selection: $filterSelection) {
-							ForEach(filterOptions, id: \.self) {
-								Text($0)
-							}
-						}
-						.pickerStyle(.menu)
+				ForEach(filterOptions, id: \.self) {
+					Text($0)
+				}
+			}
+			.pickerStyle(.menu)
 			List {
 				ForEach ($todoItems) { $item in
-					var _ = print("==> id = \($item.id), completed = \($item.completed)")
-
-					//Text("==> ID: \($item.id) - Value: \(item.completed)")
-
 					if (itemPassesFilter(item: item)) {
 						HStack {
 							if($item.id != -1) {
@@ -128,11 +121,7 @@ struct ContentView: View {
 							.tint(.red)
 							Button (action:{
 								if let index = todoItems.firstIndex(of: item) {
-									print("found: \(index)")
 									indexOfItemToEdit = index
-								}
-								else {
-									print("not found!")
 								}
 								showEditView = true
 								
@@ -155,7 +144,6 @@ struct ContentView: View {
 			.sheet(isPresented: $showAddView) {
 				addView
 			}
-
 			Button("Back to home page")
 			{
 				showingHome = true
@@ -267,9 +255,9 @@ struct ContentView: View {
 	}
 	func updateCompleteStateOfItem(item: TodoItem)
 	{
-	
+		
 		print("previous items = \(todoItems)")
-
+		
 		if let index = todoItems.firstIndex(of: item) {
 			print("found!")
 			
@@ -280,7 +268,7 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		ContentView()
-    }
+	}
 }
