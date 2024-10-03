@@ -118,6 +118,7 @@ struct ContentView: View {
 									//todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
 								}
 							})
+							.foregroundColor(getForegroundColor(item:item))
 						}
 						
 						.swipeActions {
@@ -164,8 +165,11 @@ struct ContentView: View {
 			}
 			.padding(30)
 		}
-		
-		
+	}
+	func getForegroundColor(item: TodoItem) -> Color
+	{
+		if (item.id == -1) {return Color.gray}
+		else {return Color.black}
 	}
 	var editView: some View {
 		ZStack(alignment: .center) {
