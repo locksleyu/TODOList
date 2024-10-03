@@ -58,6 +58,10 @@ struct ContentView: View {
 	@State private var indexOfItemToEdit: Int = 0
 	@State private var newItemTitle: String = ""
 	@State private var nextId: Int = 100 // todo, set properly
+	
+	let filterOptions = ["All Tasks", "Active Tasks", "Completed Tasks"]
+	@State private var filterSelection = "Active Tasks"
+	
 	private func fetchRemoteData() {
 			print("FETCH REMOTE DATA!")
 
@@ -97,6 +101,12 @@ struct ContentView: View {
 	var body: some View {
 		NavigationStack {
 			//Text("TODO List").font(.headline)
+			Picker("Filter", selection: $filterSelection) {
+							ForEach(filterOptions, id: \.self) {
+								Text($0)
+							}
+						}
+						.pickerStyle(.menu)
 			List {
 				ForEach (todoItems) { item in
 					HStack {
