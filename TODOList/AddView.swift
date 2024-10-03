@@ -36,7 +36,7 @@ struct AddView: View {
 							todoItems.insert(newItem, at: todoItems.count-1)
 							nextId += 1
 						}
-						showAddView = false // dismiss
+						showAddView = false
 					}) {
 						Text("Save")
 							.font(.headline)
@@ -45,7 +45,7 @@ struct AddView: View {
 					}
 					Spacer()
 					Button(action: {
-						showAddView = false // dismiss
+						showAddView = false
 					}) {
 						Text("Cancel")
 							.font(.headline)
@@ -70,7 +70,7 @@ struct AddView_PreviewsContainer: View {
 		AddView(todoItems: $todoItems, showAddView: $showAddView, newItemTitle: $newItemTitle, nextId: $nextId)
 	}
 }
-struct SwiftUIView_Previews: PreviewProvider {
+struct AddView_Previews: PreviewProvider {
 	static var previews: some View {
 		AddView_PreviewsContainer()
 	}
