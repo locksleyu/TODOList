@@ -192,9 +192,6 @@ struct ContentView: View {
 					Spacer()
 					Button(action: {
 						showEditView = false // dismiss
-						// TODO: remove workaround
-						todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
-						todoItems.removeLast()
 					}) {
 						Image(systemName: "xmark.circle").padding(20)
 					}
@@ -208,7 +205,7 @@ struct ContentView: View {
 		ZStack(alignment: .center) {
 			VStack {
 				Spacer()
-				TextField("Add item details here", text: $newItemTitle, axis: .vertical)
+				TextField("Add task details here", text: $newItemTitle, axis: .vertical)
 					.padding(30)
 					.padding(.top, 40)
 					.background(Color.gray)
@@ -216,7 +213,7 @@ struct ContentView: View {
 				Spacer()
 			}
 			VStack(alignment: .center) {
-				Text("Add item").padding(30).bold()
+				Text("Add task").padding(30).bold()
 				Spacer()
 			}
 			VStack {
@@ -229,9 +226,10 @@ struct ContentView: View {
 							nextId += 1
 						}
 						showAddView = false // dismiss
-
 					}) {
-						Image(systemName: "xmark.circle").padding(20)
+						Text("Save")
+							.font(.body)
+							.padding(20)
 					}
 				}
 				.padding(5)
