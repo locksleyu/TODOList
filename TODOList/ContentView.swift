@@ -121,16 +121,12 @@ struct ContentView: View {
 							})
 							.foregroundColor(getForegroundColor(item:item))
 						}
-						.background(
-							 Color(UIColor.secondarySystemGroupedBackground)
-								 .padding(.trailing, -40) // must be >= the trailing inset
-								 .padding(.bottom, -40) // must be >= the bottom inset
-						 )
+						.listRowSeparator(.hidden)
 						.listRowBackground(
 							Color(UIColor.secondarySystemGroupedBackground)
 								.overlay(alignment: .bottom) {
-									//TODO: put this back in, but skip for last element
-									//Divider().overlay(.gray)
+									
+									Divider()
 								})
 						.contentShape(Rectangle())
 						.swipeActions {
