@@ -17,7 +17,7 @@ struct TodoItem: Codable, Identifiable {
 }
 
 extension TodoItem: Equatable {
-	static func ==(first: TodoItem, second: TodoItem) -> Bool {
+	static func == (first: TodoItem, second: TodoItem) -> Bool {
 		return first.id == second.id && first.title == second.title && first.userId == second.userId && first.completed == second.completed
 	}
 }
@@ -139,7 +139,7 @@ struct ContentView: View {
 				fetchRemoteData()
 			}
 			.sheet(isPresented: $showEditView) {
-				editView
+				EditView(todoItems: $todoItems, showEditView: $showEditView, indexOfItemToEdit: $indexOfItemToEdit)
 			}
 			.sheet(isPresented: $showAddView) {
 				addView
@@ -159,35 +159,6 @@ struct ContentView: View {
 	{
 		if (item.id == -1) {return Color.gray}
 		else {return Color.black}
-	}
-	var editView: some View {
-		ZStack(alignment: .center) {
-			VStack {
-				Spacer()
-				TextField("EditItem", text: $todoItems[indexOfItemToEdit].title, axis: .vertical)
-					.padding(30)
-					.padding(.top, 40)
-					.background(Color.gray)
-				Spacer()
-				Spacer()
-			}
-			VStack(alignment: .center) {
-				Text("Edit item").padding(30).bold()
-				Spacer()
-			}
-			VStack {
-				HStack {
-					Spacer()
-					Button(action: {
-						showEditView = false // dismiss
-					}) {
-						Image(systemName: "xmark.circle").padding(20)
-					}
-				}
-				.padding(5)
-				Spacer()
-			}
-		}
 	}
 	var addView: some View {
 		ZStack(alignment: .center) {
