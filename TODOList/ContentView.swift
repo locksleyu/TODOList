@@ -9,26 +9,16 @@ import SwiftUI
 
 // https://jsonplaceholder.typicode.com/todos
 
-
-class TodoItem: Codable, Identifiable
-{
+struct TodoItem: Codable, Identifiable {
 	let userId: Int
 	let id: Int
 	var title: String
 	var completed: Bool
-	init (userId: Int, id: Int, title: String, completed: Bool)
-	{
-		self.userId = userId;
-		self.id = id;
-		self.title = title;
-		self.completed = completed;
-	}
 }
-
 
 extension TodoItem: Equatable {
   static func ==(first: TodoItem, second: TodoItem) -> Bool {
-	  return first.id == second.id // assume ID is unique
+	  return first.id == second.id && first.title == second.title && first.userId == second.userId && first.completed == second.completed
   }
 }
 
@@ -91,12 +81,15 @@ struct ContentView: View {
 						}
 						.pickerStyle(.menu)
 			List {
-				ForEach (todoItems) { item in
+				ForEach ($todoItems) { $item in
+					var _ = print("==> id = \($item.id), completed = \($item.completed)")
+
+					//Text("==> ID: \($item.id) - Value: \(item.completed)")
+
 					if (itemPassesFilter(item: item)) {
 						HStack {
-							
-							if(item.id != -1) {
-								var _ = print("id = \(item.id), completed = \(item.completed)")
+							if($item.id != -1) {
+								var _ = print("id = \(item.id), completed = \($item.completed)")
 								if (item.completed) {
 									Label("", systemImage:"checkmark").foregroundStyle(.green)
 								}
@@ -116,7 +109,6 @@ struct ContentView: View {
 								else {
 									var _ = print("before = \(item.completed), now = \(!item.completed), id = \(item.id)")
 									updateCompleteStateOfItem(item: item)
-									//todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
 								}
 							})
 							.foregroundColor(getForegroundColor(item:item))
@@ -154,9 +146,6 @@ struct ContentView: View {
 				.clipShape(RoundedRectangle(cornerRadius: 0.0, style: .continuous))
 				.font(.body)
 			}
-			//.toolbar {
-			//	EditButton()
-			//}
 			.onAppear {
 				fetchRemoteData()
 			}
@@ -278,12 +267,9 @@ struct ContentView: View {
 		if let index = todoItems.firstIndex(of: item) {
 			print("found!")
 			
-			todoItems[index].completed = !todoItems[index].completed
-			// TODO: remove workaround
-			todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
-			todoItems.removeLast()
+			todoItems[index].completed = !todoItems[index].completed;
 		}
-			print("new items = \(todoItems)")
+		print("new items = \(todoItems)")
 	}
 }
 
