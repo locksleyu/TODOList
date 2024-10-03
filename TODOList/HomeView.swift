@@ -12,7 +12,8 @@ struct HomeView: View {
     var body: some View {
 		VStack {
 			Text("TODO List Application Challenge")
-			.padding(30)
+			.padding(20)
+			.font(.headline)
 			
 			Button("Start")
 			{
@@ -22,8 +23,10 @@ struct HomeView: View {
 				ContentView()
 			}
 			.padding(30)
+			.font(.largeTitle)
 
 			Text("by: Jeffrey Wisgo")
+				.font(.footnote)
 		}
     }
 }

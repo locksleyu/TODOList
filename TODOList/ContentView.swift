@@ -152,6 +152,7 @@ struct ContentView: View {
 					}
 				}
 				.clipShape(RoundedRectangle(cornerRadius: 0.0, style: .continuous))
+				.font(.body)
 			}
 			//.toolbar {
 			//	EditButton()
@@ -174,6 +175,7 @@ struct ContentView: View {
 				HomeView()
 			}
 			.padding(30)
+			.font(.title)
 		}
 	}
 	func getForegroundColor(item: TodoItem) -> Color
