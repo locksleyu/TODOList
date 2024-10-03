@@ -43,7 +43,7 @@ struct EditView: View {
 }
 
 
-struct SwiftUIView_PreviewsContainer: View {
+struct EditView_PreviewsContainer: View {
 	@State var todoItems: [TodoItem] = [TodoItem(userId: 1, id: 1, title: "test", completed: false)]
 	@State var showEditView: Bool = false
 	@State var indexOfItemToEdit: Int = 0
@@ -52,9 +52,9 @@ struct SwiftUIView_PreviewsContainer: View {
 		EditView(todoItems: $todoItems, showEditView: $showEditView, indexOfItemToEdit: $indexOfItemToEdit)
 	}
 }
-struct SwiftUIView_Previews: PreviewProvider {
+struct EditView_Previews: PreviewProvider {
 	static var previews: some View {
-		SwiftUIView_PreviewsContainer()
+		EditView_PreviewsContainer()
 	}
 }
 
