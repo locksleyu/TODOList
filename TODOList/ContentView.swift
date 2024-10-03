@@ -43,6 +43,8 @@ struct ContentView: View {
 	let filterOptions = ["All Tasks", "Active Tasks", "Completed Tasks"]
 	@State private var filterSelection = "Active Tasks"
 	
+	@State private var showingHome: Bool = false
+	
 	private func fetchRemoteData() {
 			print("FETCH REMOTE DATA!")
 
@@ -153,7 +155,16 @@ struct ContentView: View {
 			.sheet(isPresented: $showAddView) {
 				addView
 			}
+			Button("Back to home page")
+			{
+				showingHome = true
+			}
+			.fullScreenCover(isPresented: $showingHome) {
+				HomeView()
+			}
+			.padding(30)
 		}
+		
 		
 	}
 	var editView: some View {
