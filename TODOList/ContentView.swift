@@ -25,25 +25,6 @@ class TodoItem: Codable, Identifiable
 	}
 }
 
-/*
-struct TodoItem2: Codable, Identifiable {
-	let userId: Int
-	let id: Int
-	var title: String
-	var myTitle: String
-	{
-		get {
-			print("get returns \(title) [\(self)]")
-			return title
-		}
-		set (n) {
-			print("set sets \(n) [\(self)]")
-			title = n
-		}
-	}
-	var completed: Bool
-}
-*/
 
 extension TodoItem: Equatable {
   static func ==(first: TodoItem, second: TodoItem) -> Bool {
@@ -109,52 +90,55 @@ struct ContentView: View {
 						.pickerStyle(.menu)
 			List {
 				ForEach (todoItems) { item in
-					HStack {
-						if(item.id != -1) {
-							var _ = print("id = \(item.id), completed = \(item.completed)")
-							if (item.completed) {
-								Label("", systemImage:"checkmark").foregroundStyle(.green)
+					if (itemPassesFilter(item: item)) {
+						HStack {
+							if(item.id != -1) {
+								var _ = print("id = \(item.id), completed = \(item.completed)")
+								if (item.completed) {
+									Label("", systemImage:"checkmark").foregroundStyle(.green)
+								}
+								else {
+									Label("", systemImage:"checkmark").foregroundStyle(.gray)
+								}
 							}
 							else {
-								Label("", systemImage:"checkmark").foregroundStyle(.gray)
+								Label("", systemImage:"plus").foregroundStyle(.gray)
 							}
-						}
-						else {
-							Label("", systemImage:"plus").foregroundStyle(.gray)
+							
+							Button(item.title, action: {
+								if (item.id == -1) { // add item
+									newItemTitle = ""
+									showAddView = true;
+								}
+								else {
+									var _ = print("before = \(item.completed), now = \(!item.completed), id = \(item.id)")
+									updateCompleteStateOfItem(item: item)
+									//todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
+								}
+							})
 						}
 						
-						Button(item.title, action: {
-							if (item.id == -1) { // add item
-								newItemTitle = ""
-								showAddView = true;
+						.swipeActions {
+							Button (action:{ removeItemWithID(id: item.id) }) {
+								Label("Delete", systemImage: "minus.circle")
 							}
-							else {
-								var _ = print("before = \(item.completed), now = \(!item.completed), id = \(item.id)")
-								updateCompleteStateOfItem(item: item)
-								//todoItems.append(TodoItem(userId: 1, id: 1, title: "abc", completed: false))
+							.tint(.red)
+							Button (action:{
+								if let index = todoItems.firstIndex(of: item) {
+									print("found: \(index)")
+									indexOfItemToEdit = index
+								}
+								else {
+									print("not found!")
+								}
+								showEditView = true
+								
+							}) {
+								Label("Edit", systemImage: "pencil")
 							}
-						})
-					}
-					.swipeActions {
-						Button (action:{ removeItemWithID(id: item.id) }) {
-							  Label("Delete", systemImage: "minus.circle")
-						  }
-						  .tint(.red)
-						  Button (action:{
-							  if let index = todoItems.firstIndex(of: item) {
-								  print("found: \(index)")
-								  indexOfItemToEdit = index
-							  }
-							  else {
-								  print("not found!")
-							  }
-							  showEditView = true
-							  
-						  }) {
-							  Label("Edit", systemImage: "pencil")
-						  }
-						  .tint(.blue)
+							.tint(.blue)
 						}
+					}
 				}
 			}
 			//.toolbar {
@@ -238,6 +222,21 @@ struct ContentView: View {
 				Spacer()
 			}
 		}
+	}
+	func itemPassesFilter(item: TodoItem) -> Bool
+	{
+		if (filterSelection == "Active Tasks")
+		{
+			if ((item.id != -1) && (item.completed == true)) {
+				return false
+			}
+		} else if (filterSelection == "Completed Tasks")
+		{
+			if ((item.id != -1)  && (item.completed == false)) {
+				return false
+			}
+		}
+		return true
 	}
 	func removeItemWithID(id: Int)
 	{
