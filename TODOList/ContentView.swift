@@ -94,6 +94,7 @@ struct ContentView: View {
 				ForEach (todoItems) { item in
 					if (itemPassesFilter(item: item)) {
 						HStack {
+							
 							if(item.id != -1) {
 								var _ = print("id = \(item.id), completed = \(item.completed)")
 								if (item.completed) {
@@ -120,7 +121,18 @@ struct ContentView: View {
 							})
 							.foregroundColor(getForegroundColor(item:item))
 						}
-						
+						.background(
+							 Color(UIColor.secondarySystemGroupedBackground)
+								 .padding(.trailing, -40) // must be >= the trailing inset
+								 .padding(.bottom, -40) // must be >= the bottom inset
+						 )
+						.listRowBackground(
+							Color(UIColor.secondarySystemGroupedBackground)
+								.overlay(alignment: .bottom) {
+									//TODO: put this back in, but skip for last element
+									//Divider().overlay(.gray)
+								})
+						.contentShape(Rectangle())
 						.swipeActions {
 							Button (action:{ removeItemWithID(id: item.id) }) {
 								Label("Delete", systemImage: "minus.circle")
@@ -143,6 +155,7 @@ struct ContentView: View {
 						}
 					}
 				}
+				.clipShape(RoundedRectangle(cornerRadius: 0.0, style: .continuous))
 			}
 			//.toolbar {
 			//	EditButton()
@@ -156,6 +169,7 @@ struct ContentView: View {
 			.sheet(isPresented: $showAddView) {
 				addView
 			}
+
 			Button("Back to home page")
 			{
 				showingHome = true
