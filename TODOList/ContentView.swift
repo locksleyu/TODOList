@@ -218,7 +218,6 @@ struct ContentView: View {
 			}
 			VStack {
 				HStack {
-					Spacer()
 					Button(action: {
 						if (newItemTitle != "") {
 							let newItem = TodoItem(userId: 3, id: nextId, title: newItemTitle, completed: false)
@@ -228,7 +227,16 @@ struct ContentView: View {
 						showAddView = false // dismiss
 					}) {
 						Text("Save")
-							.font(.body)
+							.font(.headline)
+							.padding(20)
+							.disabled(newItemTitle == "")
+					}
+					Spacer()
+					Button(action: {
+						showAddView = false // dismiss
+					}) {
+						Text("Cancel")
+							.font(.headline)
 							.padding(20)
 					}
 				}
