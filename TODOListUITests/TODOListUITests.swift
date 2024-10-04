@@ -134,6 +134,9 @@ final class TODOListUITests: XCTestCase {
 		XCTAssert(app.buttons["xxx"].waitForExistence(timeout: 30))
 	}
 	
+	// for now, just do basic validation based on fetched data as-is
+	// if we cannot rely on that data, then we should change this to populate with all custom data and do deeper validation
+	
 	func testFilter() throws {
 		let app = XCUIApplication()
 		app.launch()
@@ -144,14 +147,31 @@ final class TODOListUITests: XCTestCase {
 		
 		XCTAssert(app.buttons["Back to home page"].waitForExistence(timeout: 3))
 		
-		let countBefore = app.buttons.matching(identifier: "ItemButton").count
+		let countActiveTasks = app.buttons.matching(identifier: "ItemButton").count
 				
+		XCTAssert(countActiveTasks == 4)
+		
 		app.buttons["FilterPicker"].tap()
 		
-		displayElements()
+		XCTAssert(app.buttons["All Tasks"].waitForExistence(timeout: 3))
 
-		XCTAssert(app.buttons["Back to home xxx"].waitForExistence(timeout: 30))
+		app.buttons["All Tasks"].tap()
+	
+		let countAllTasks = app.buttons.matching(identifier: "ItemButton").count
 
+		XCTAssert(countAllTasks == 6)
+		
+		app.buttons["FilterPicker"].tap()
+		
+		XCTAssert(app.buttons["Completed Tasks"].waitForExistence(timeout: 3))
+
+		app.buttons["Completed Tasks"].tap()
+	
+		let completedTasks = app.buttons.matching(identifier: "ItemButton").count
+
+		XCTAssert(completedTasks == 3)
+		
+		XCTAssert(app.buttons["tempore ut sint quis recusandae"].waitForExistence(timeout: 3))
 	}
 		
 	func displayElements() {
