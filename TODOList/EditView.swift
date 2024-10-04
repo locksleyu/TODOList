@@ -11,7 +11,9 @@ struct EditView: View {
 	@Binding var todoItems: [TodoItem]
 	@Binding var showEditView: Bool
 	@Binding var indexOfItemToEdit: Int
-	var fieldChanged: Bool = false
+
+	@State var originalTitle: String
+
 	var body: some View {
 		ZStack(alignment: .center) {
 			VStack {
@@ -40,7 +42,7 @@ struct EditView: View {
 					Spacer()
 					Button(action: {
 						showEditView = false
-						indexOfItemToEdit = -1 // signal that we have nothing to change
+						todoItems[indexOfItemToEdit].title = originalTitle
 					}) {
 						Text("Cancel")
 							.font(.headline)
@@ -60,7 +62,7 @@ struct EditView: View {
 		@State var indexOfItemToEdit: Int = 0
 		
 		var body: some View {
-			EditView(todoItems: $todoItems, showEditView: $showEditView, indexOfItemToEdit: $indexOfItemToEdit)
+			EditView(todoItems: $todoItems, showEditView: $showEditView, indexOfItemToEdit: $indexOfItemToEdit, originalTitle: "original title")
 		}
 	}
 	struct EditView_Previews: PreviewProvider {

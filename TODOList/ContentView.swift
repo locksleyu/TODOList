@@ -139,7 +139,7 @@ struct ContentView: View {
 				fetchRemoteData()
 			}
 			.sheet(isPresented: $showEditView) {
-				EditView(todoItems: $todoItems, showEditView: $showEditView, indexOfItemToEdit: $indexOfItemToEdit)
+				EditView(todoItems: $todoItems, showEditView: $showEditView, indexOfItemToEdit: $indexOfItemToEdit, originalTitle: todoItems[indexOfItemToEdit].title)
 			}
 			.sheet(isPresented: $showAddView) {
 				AddView(todoItems: $todoItems, showAddView: $showAddView, newItemTitle: $newItemTitle, nextId: $nextId)
