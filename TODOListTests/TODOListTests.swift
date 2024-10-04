@@ -11,11 +11,9 @@ import XCTest
 final class TODOListTests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
 	// In this test we will avoid doing much validation on the values since there is no guarantee they will not change later
@@ -71,4 +69,61 @@ final class TODOListTests: XCTestCase {
 		XCTAssert(item1.title == "item 1")
 		XCTAssert(item1.completed == false)
 	}
+	
+	func testRemoteItem() throws {
+		let item1 = TodoItem(userId: 1, id: 1, title: "item 1", completed: false)
+		let item2 = TodoItem.createAddItem()
+		
+		var todoItems: [TodoItem] = [item1, item2];
+		
+		TodoItemsLogic.removeItemWithID(&todoItems, id: item2.id)
+		
+		XCTAssert(todoItems.count == 1)
+		XCTAssert(todoItems[0].title == "item 1")
+		
+		TodoItemsLogic.removeItemWithID(&todoItems, id: item1.id)
+
+		XCTAssert(todoItems.count == 0)
+	}
+	
+	func testUpdateCompleteState() throws {
+		let item1 = TodoItem(userId: 1, id: 1, title: "item 1", completed: false)
+		let item2 = TodoItem.createAddItem()
+		
+		var todoItems: [TodoItem] = [item1, item2];
+
+		TodoItemsLogic.updateCompleteStateOfItem(&todoItems, item: item1)
+		
+		XCTAssert(todoItems.count == 2)
+		XCTAssert(todoItems[0].completed == true)
+		
+		TodoItemsLogic.updateCompleteStateOfItem(&todoItems, item: item1)
+		
+		XCTAssert(todoItems[0].completed == false)
+	}
+	func testGetNextId() throws {
+		let item1 = TodoItem(userId: 1, id: 1, title: "item 1", completed: false)
+		let item2 = TodoItem(userId: 1, id: 100, title: "item 2", completed: false)
+		let item3 = TodoItem.createAddItem()
+		
+		var todoItems: [TodoItem] = [item1, item2, item3];
+
+		let nextId = TodoItemsLogic.getNextId(todoItems)
+		
+		XCTAssert(nextId == 101)
+	}
+/*
+	static func updateCompleteStateOfItem(_ todoItems: inout [TodoItem], item: TodoItem)
+	{
+		if let index = todoItems.firstIndex(of: item) {
+			todoItems[index].completed = !todoItems[index].completed;
+		}
+	}
+	 
+	static func getNextId(_ todoItems: [TodoItem]) -> Int {
+		let nextId = (todoItems.map {$0.id}.max() ?? 1000) + 1
+		return nextId
+	}
+	 */
+	
 }
