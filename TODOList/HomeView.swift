@@ -20,7 +20,7 @@ struct HomeView: View {
 				showingMain = true
 			}
 			.fullScreenCover(isPresented: $showingMain) {
-				MainView()
+				MainView(showingMain: $showingMain)
 			}
 			.padding(30)
 			.font(.largeTitle)

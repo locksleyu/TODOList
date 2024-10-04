@@ -20,6 +20,8 @@ enum FilterOptions: String, Equatable, CaseIterable {
 struct MainView: View {
 	@State internal var todoItems: [TodoItem] = []
 	
+	@Binding var showingMain: Bool
+
 	@State private var showEditView: Bool = false
 	@State private var showAddView: Bool = false
 	@State private var showHome: Bool = false
@@ -135,7 +137,8 @@ struct MainView: View {
 			}
 			Button("Back to home page")
 			{
-				showHome = true
+				showingMain = false
+				//showHome = true
 			}
 			.fullScreenCover(isPresented: $showHome) {
 				HomeView()
@@ -175,8 +178,17 @@ struct MainView: View {
 
 }
 
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		MainView()
+
+struct MainView_PreviewsContainer: View {
+	@State var showingMain = true
+
+	var body: some View {
+		MainView(showingMain: $showingMain)
 	}
 }
+struct MainView_Previews: PreviewProvider {
+	static var previews: some View {
+		MainView_PreviewsContainer()
+	}
+}
+
