@@ -59,44 +59,43 @@ final class TODOListUITests: XCTestCase {
 		
 		app.buttons["Add Item"].tap()
 		
-		XCTAssert(app.staticTexts["Add task"].waitForExistence(timeout: 3)) 
+		XCTAssert(app.staticTexts["Add task"].waitForExistence(timeout: 3))
+		
+		XCTAssert(app.textViews["AddTaskTextField"].waitForExistence(timeout: 3))
+		
+		app.textViews["AddTaskTextField"].tap()
 
-		print("here1:")
-		
-		for item in app.textFields.allElementsBoundByIndex{
-			print(item.label)
-		}
-		print("here2:")
-
-		for item in app.buttons.allElementsBoundByIndex{
-			print(item.label)
-		}
-		print("here3:")
-
-		for item in app.staticTexts.allElementsBoundByIndex{
-			print(item.label)
-		}
-		
-		if (app.textFields["Add task details here"].exists) {
-			print("tap1")
-			app.textFields["Add task details here"].tap()
-		}
-		
-		if (app.textFields["Add task details here"].exists) {
-			print("tap2")
-			app.textFields["Add task details here"].tap()
-		}
-		
-		XCTAssert(app.textFields["AddTaskTextField"].waitForExistence(timeout: 3))
-
-		XCTAssert(app.textFields["AddTaskTextField"].waitForExistence(timeout: 3))
-		XCTAssert(app.textFields["Add task details here"].waitForExistence(timeout: 3))
-
-		
-		
-		app.textFields["Add task details here"].typeText("new item!")
-		
+		app.textViews["AddTaskTextField"].typeText("new item!")
 	
 	}
 
+	func displayElements() {
+		print("text fields:")
+		
+		for item in app.textFields.allElementsBoundByIndex{
+			print("=>" + item.label + "," + item.title + "," + item.identifier)
+		}
+		print("buttons:")
+
+		for item in app.buttons.allElementsBoundByIndex{
+			print("=>" + item.label + "," + item.title + "," + item.identifier)
+		}
+		print("static texts:")
+
+		for item in app.staticTexts.allElementsBoundByIndex{
+			print("=>" + item.label + "," + item.title + "," + item.identifier)
+		}
+		print("text views:")
+
+		for item in app.textViews.allElementsBoundByIndex{
+			print("=>" + item.label + "," + item.title + "," + item.identifier)
+		}
+		
+		print("secure text fields:")
+
+		for item in app.secureTextFields.allElementsBoundByIndex{
+			print("=>" + item.label + "," + item.title + "," + item.identifier)
+		}
+		
+	}
 }
