@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 enum FilterOptions: String, Equatable, CaseIterable {
 	case allTasks  		= "All Tasks"
 	case activeTasks	= "Active Tasks"
@@ -16,7 +15,6 @@ enum FilterOptions: String, Equatable, CaseIterable {
 	var localizedName: LocalizedStringKey {
 		LocalizedStringKey(rawValue)
 	}
-
 }
 
 struct MainView: View {
@@ -26,6 +24,7 @@ struct MainView: View {
 	@State private var showAddView: Bool = false
 	@State private var showHome: Bool = false
 	@State private var showAlert: Bool = false
+	
 	@State private var alertText: String = "Error"
 	@State private var indexOfItemToEdit: Int = 0
 	@State private var newItemTitle: String = ""
@@ -33,7 +32,7 @@ struct MainView: View {
 	@State private var filterSelection: FilterOptions = .activeTasks
 	
 	internal func fetchRemoteData() {
-		let url = URL(string: "https://jsonplaceholder.typicode.com/todos?userId=3")!
+		let url = URL(string: Configuration.TODOItemsFetchURL)!
 		var request = URLRequest(url: url)
 		request.httpMethod = "GET"  // optional
 		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
