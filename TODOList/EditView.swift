@@ -58,7 +58,6 @@ struct EditView: View {
 		}
 	}
 	
-	
 	struct EditView_PreviewsContainer: View {
 		@State var todoItems: [TodoItem] = [TodoItem(userId: 1, id: 1, title: "test", completed: false)]
 		@State var showEditView: Bool = false

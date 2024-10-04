@@ -59,7 +59,6 @@ struct AddView: View {
 	}
 }
 
-
 struct AddView_PreviewsContainer: View {
 	@State var todoItems: [TodoItem] = [TodoItem(userId: 1, id: 1, title: "test", completed: false)]
 	@State var showAddView: Bool = false

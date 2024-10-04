@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// https://jsonplaceholder.typicode.com/todos
-
 struct TodoItem: Codable, Identifiable {
 	let userId: Int
 	let id: Int
@@ -22,7 +20,7 @@ extension TodoItem: Equatable {
 	}
 }
 
-struct ContentView: View {
+struct MainView: View {
 	@State private var todoItems: [TodoItem] = []
 	@State private var showEditView: Bool = false
 	@State private var showAddView: Bool = false
@@ -32,7 +30,6 @@ struct ContentView: View {
 	
 	let filterOptions = ["All Tasks", "Active Tasks", "Completed Tasks"]
 	@State private var filterSelection = "Active Tasks"
-	
 	@State private var showingHome: Bool = false
 	
 	private func fetchRemoteData() {
@@ -45,11 +42,9 @@ struct ContentView: View {
 				print("Error while fetching data:", error)
 				return
 			}
-			
 			guard let data = data else {
 				return
 			}
-			
 			do {
 				let decodedData = try JSONDecoder().decode([TodoItem].self, from: data)
 				// get only 5 items at most
@@ -100,7 +95,6 @@ struct ContentView: View {
 									showAddView = true;
 								}
 								else {
-									var _ = print("before = \(item.completed), now = \(!item.completed), id = \(item.id)")
 									updateCompleteStateOfItem(item: item)
 								}
 							})
@@ -112,7 +106,6 @@ struct ContentView: View {
 								}
 								showEditView = true
 							}*/
-							
 						}
 						.listRowSeparator(.hidden)
 						.listRowBackground(
@@ -186,25 +179,18 @@ struct ContentView: View {
 	}
 	func removeItemWithID(id: Int)
 	{
-		print("remove me!")
 		todoItems.removeAll() {$0.id == id}
 	}
 	func updateCompleteStateOfItem(item: TodoItem)
 	{
-		
-		print("previous items = \(todoItems)")
-		
 		if let index = todoItems.firstIndex(of: item) {
-			print("found!")
-			
 			todoItems[index].completed = !todoItems[index].completed;
 		}
-		print("new items = \(todoItems)")
 	}
 }
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContentView()
+		MainView()
 	}
 }
