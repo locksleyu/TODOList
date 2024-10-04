@@ -121,6 +121,7 @@ struct MainView: View {
 								Label("Edit", systemImage: "pencil")
 							}
 							.tint(.blue)
+							.accessibilityIdentifier("SwipeEdit")
 						}
 					}
 				}

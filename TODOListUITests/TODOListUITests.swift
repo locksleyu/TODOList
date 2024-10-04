@@ -89,11 +89,58 @@ final class TODOListUITests: XCTestCase {
 
 		XCTAssert(countAfterDelete == countBefore)
 		
-		displayElements()
+		//displayElements()
 		
 		XCTAssertFalse(app.buttons["I"].exists)
 	}
+	func testAddAndEdit() throws {
+		let app = XCUIApplication()
+		app.launch()
+		
+		XCTAssert(app.staticTexts["TODO List Application Challenge"].exists)
+		
+		app.buttons["Start"].tap()
+		
+		XCTAssert(app.buttons["Back to home page"].waitForExistence(timeout: 3))
+		
+		let countBefore = app.buttons.matching(identifier: "ItemButton").count
+		
+		// add item
+		
+		app.buttons["Add Item"].tap()
+		
+		XCTAssert(app.staticTexts["Add task"].waitForExistence(timeout: 3))
+		
+		XCTAssert(app.textViews["AddTaskTextField"].waitForExistence(timeout: 3))
+		
+		app.textViews["AddTaskTextField"].tap()
+		
+		app.textViews["AddTaskTextField"].typeText("I") // TODO: fix intermittent issue with longer names getting garbled
+		
+		app.buttons["Save"].tap()
+		
+		let countAfter = app.buttons.matching(identifier: "ItemButton").count
+		
+		XCTAssert(app.buttons["I"].waitForExistence(timeout: 3))
+		
+		XCTAssert(countAfter == countBefore + 1)
+		
+		// edit
+		
+		//app.buttons["I"].swipeLeft(velocity: 1)
+		
+		// simulate partial swipe
+		let startPoint = app.buttons["I"].coordinate(withNormalizedOffset: CGVectorMake(0, 0)) // center of the element
+		let finishPoint = startPoint.withOffset(CGVectorMake(0, 0))
+		startPoint.press(forDuration: 0, thenDragTo: finishPoint)
+		
+		displayElements()
+		
+		XCTAssert(app.buttons["xxx"].waitForExistence(timeout: 30))
 
+
+
+	}
 	func displayElements() {
 		let app = XCUIApplication()
 
@@ -122,6 +169,12 @@ final class TODOListUITests: XCTestCase {
 
 		for item in app.secureTextFields.allElementsBoundByIndex{
 			print("=>" + item.label + "," + item.title + "," + item.identifier)
+		}
+		
+		print("images:")
+
+		for item in app.images.allElementsBoundByIndex{
+			print("=>" + item.label + "," + item.title + "," + item.identifier )
 		}
 		
 	}
