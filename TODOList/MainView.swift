@@ -20,6 +20,12 @@ extension TodoItem: Equatable {
 	}
 }
 
+enum FilterOptions: String, Equatable, CaseIterable {
+	case allTasks  		= "All Tasks"
+	case activeTasks	= "Active Tasks"
+	case completedTasks	= "Completed Tasks"
+}
+
 struct MainView: View {
 	@State private var todoItems: [TodoItem] = []
 	
@@ -31,9 +37,7 @@ struct MainView: View {
 	@State private var indexOfItemToEdit: Int = 0
 	@State private var newItemTitle: String = ""
 	@State private var nextId: Int = 0
-	
-	let filterOptions = ["All Tasks", "Active Tasks", "Completed Tasks"]
-	@State private var filterSelection = "Active Tasks"
+	@State private var filterSelection: FilterOptions = .activeTasks
 	
 	private func fetchRemoteData() {
 		let url = URL(string: "https://jsonplaceholder.typicode.com/todos?userId=3")!
@@ -73,8 +77,9 @@ struct MainView: View {
 	var body: some View {
 		NavigationStack {
 			Picker("Filter", selection: $filterSelection) {
-				ForEach(filterOptions, id: \.self) {
-					Text($0)
+				ForEach(FilterOptions.allCases, id: \.self) { value in // \.self is needed b/c enum doesn't confirm to Identifable
+					Text(value.rawValue)
+					.tag(value)
 				}
 			}
 			.pickerStyle(.menu)
@@ -179,12 +184,12 @@ struct MainView: View {
 	}
 	func itemPassesFilter(item: TodoItem) -> Bool
 	{
-		if (filterSelection == "Active Tasks")
+		if (filterSelection == .activeTasks)
 		{
 			if ((item.id != -1) && (item.completed == true)) {
 				return false
 			}
-		} else if (filterSelection == "Completed Tasks")
+		} else if (filterSelection == .completedTasks)
 		{
 			if ((item.id != -1)  && (item.completed == false)) {
 				return false
