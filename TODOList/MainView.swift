@@ -22,15 +22,17 @@ extension TodoItem: Equatable {
 
 struct MainView: View {
 	@State private var todoItems: [TodoItem] = []
+	
 	@State private var showEditView: Bool = false
 	@State private var showAddView: Bool = false
+	@State private var showHome: Bool = false
+
 	@State private var indexOfItemToEdit: Int = 0
 	@State private var newItemTitle: String = ""
-	@State private var nextId: Int = 100 // TODO: set properly
+	@State private var nextId: Int = 0
 	
 	let filterOptions = ["All Tasks", "Active Tasks", "Completed Tasks"]
 	@State private var filterSelection = "Active Tasks"
-	@State private var showingHome: Bool = false
 	
 	private func fetchRemoteData() {
 		let url = URL(string: "https://jsonplaceholder.typicode.com/todos?userId=3")!
@@ -48,14 +50,15 @@ struct MainView: View {
 			do {
 				let decodedData = try JSONDecoder().decode([TodoItem].self, from: data)
 				// get only 5 items at most
-				if ( decodedData.count <= 2) { // TODO: change to 5 before submit!!
+				if ( decodedData.count <= 5) { // TODO: change to 5 before submit!!
 					self.todoItems = decodedData
 				}
 				else {
-					self.todoItems = Array(decodedData[0...1]) // TODO: change to 4 before submit!!
+					self.todoItems = Array(decodedData[0...4]) // TODO: change to 4 before submit!!
 				}
 				// TODO: find a cleaner way to integrate this special item (merge Lists)
 				self.todoItems.append(TodoItem(userId: 0, id: -1, title: "Add task", completed: false))
+				self.nextId = getNextId()
 				
 			} catch let jsonError {
 				print("Failed to decode json", jsonError)
@@ -88,7 +91,6 @@ struct MainView: View {
 							else {
 								Label("", systemImage:"plus").foregroundStyle(.gray)
 							}
-							
 							Button(item.title, action: {
 								if (item.id == -1) { // add item
 									newItemTitle = ""
@@ -147,9 +149,9 @@ struct MainView: View {
 			}
 			Button("Back to home page")
 			{
-				showingHome = true
+				showHome = true
 			}
-			.fullScreenCover(isPresented: $showingHome) {
+			.fullScreenCover(isPresented: $showHome) {
 				HomeView()
 			}
 			.padding(30)
@@ -161,7 +163,12 @@ struct MainView: View {
 		if (item.id == -1) {return Color.gray}
 		else {return Color.black}
 	}
-
+	func getNextId() -> Int {
+		let nextId = ($todoItems.wrappedValue.map {$0.id}.max() ?? 1000) + 1
+		 
+		print("nextId = \(nextId)")
+		return nextId
+	}
 	func itemPassesFilter(item: TodoItem) -> Bool
 	{
 		if (filterSelection == "Active Tasks")
