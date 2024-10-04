@@ -127,12 +127,7 @@ final class TODOListUITests: XCTestCase {
 		
 		// edit
 		
-		//app.buttons["I"].swipeLeft(velocity: 1)
-		
-		// simulate partial swipe
-		let startPoint = app.buttons["I"].coordinate(withNormalizedOffset: CGVectorMake(0, 0)) // center of the element
-		let finishPoint = startPoint.withOffset(CGVectorMake(0, 0))
-		startPoint.press(forDuration: 0, thenDragTo: finishPoint)
+		app.buttons["I"].swipeRight(velocity: 1000)
 		
 		displayElements()
 		

@@ -107,11 +107,23 @@ struct MainView: View {
 									Divider()
 								})
 						.contentShape(Rectangle())
-						.swipeActions {
+						.swipeActions(edge: .trailing) { // swipe left
 							Button (action:{ TodoItemsLogic.removeItemWithID(&todoItems, id: item.id) }) {
 								Label("Delete", systemImage: "minus.circle")
 							}
 							.tint(.red)
+							Button (action:{
+								if let index = todoItems.firstIndex(of: item) {
+									indexOfItemToEdit = index
+								}
+								showEditView = true
+							}) {
+								Label("Edit", systemImage: "pencil")
+							}
+							.tint(.blue)
+							.accessibilityIdentifier("SwipeEdit")
+						}
+						.swipeActions(edge: .leading) {
 							Button (action:{
 								if let index = todoItems.firstIndex(of: item) {
 									indexOfItemToEdit = index
