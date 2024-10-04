@@ -32,37 +32,24 @@ struct MainView: View {
 	@State private var filterSelection: FilterOptions = .activeTasks
 	
 	internal func fetchRemoteData() {
-		let url = URL(string: Configuration.TODOItemsFetchURL)!
-		var request = URLRequest(url: url)
-		request.httpMethod = "GET"  // optional
-		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-		let task = URLSession.shared.dataTask(with: request){ data, response, error in
-			if let error = error {
-				print("Error while fetching data:", error)
-				showAlert("Error fetching initial data")
+		TodoItemsLogic.fetchRemoteDataFromNetwork { todoItems, error in
+			guard error == nil else {
+				showAlert(error?.localizedDescription ?? "Error fetching data")
+				return;
 			}
-			guard let data = data else {
-				return
-			}
-			do {
-				let decodedData = try JSONDecoder().decode([TodoItem].self, from: data)
+			if let todoItems = todoItems {
 				// get only 5 items at most
-				if ( decodedData.count <= 5) { // TODO: change to 5 before submit!!
-					self.todoItems = decodedData
+				if ( todoItems.count <= 5) { // TODO: change to 5 before submit!!
+					self.todoItems = todoItems
 				}
 				else {
-					self.todoItems = Array(decodedData[0...4]) // TODO: change to 4 before submit!!
+					self.todoItems = Array(todoItems[0...4]) // TODO: change to 4 before submit!!
 				}
 				// TODO: find a cleaner way to integrate this special item (merge Lists)
 				self.todoItems.append(TodoItem.createAddItem())
 				self.nextId = TodoItemsLogic.getNextId(todoItems)
-				
-			} catch let jsonError {
-				print("Failed to decode json", jsonError)
-				showAlert("Error decoding initial data")
 			}
 		}
-		task.resume()
 	}
 	var body: some View {
 		NavigationStack {
@@ -170,7 +157,6 @@ struct MainView: View {
 		if (item.isAddItem()) {return Color.gray}
 		else {return Color.black}
 	}
-
 	func itemPassesFilter(item: TodoItem) -> Bool
 	{
 		if (filterSelection == .activeTasks)

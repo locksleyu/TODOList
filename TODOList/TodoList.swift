@@ -48,4 +48,27 @@ struct TodoItemsLogic {
 		let nextId = (todoItems.map {$0.id}.max() ?? 1000) + 1
 		return nextId
 	}
+	static func fetchRemoteDataFromNetwork(completionHandler: @escaping (_ todoItems: [TodoItem]?, _ error: Error?) -> ()) {
+		let url = URL(string: Configuration.TODOItemsFetchURL)!
+		var request = URLRequest(url: url)
+		request.httpMethod = "GET"  // optional
+		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+		let task = URLSession.shared.dataTask(with: request){ data, response, error in
+			if let error = error {
+				print("Error while fetching data:", error)
+				completionHandler(nil, NSError(domain: "", code: 100, userInfo: [ NSLocalizedDescriptionKey: "Error fetching data"]))
+			}
+			guard let data = data else {
+				return
+			}
+			do {
+				let decodedData: [TodoItem] = try JSONDecoder().decode([TodoItem].self, from: data)
+				completionHandler(decodedData, nil)
+			} catch let jsonError {
+				print("Failed to decode json", jsonError)
+				completionHandler(nil, NSError(domain: "", code: 100, userInfo: [ NSLocalizedDescriptionKey: "Error decoding data"]))
+			}
+		}
+		task.resume()
+	}
 }
