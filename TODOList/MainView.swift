@@ -26,7 +26,8 @@ struct MainView: View {
 	@State private var showEditView: Bool = false
 	@State private var showAddView: Bool = false
 	@State private var showHome: Bool = false
-
+	@State private var showAlert: Bool = false
+	@State private var alertText: String = "Error"
 	@State private var indexOfItemToEdit: Int = 0
 	@State private var newItemTitle: String = ""
 	@State private var nextId: Int = 0
@@ -42,6 +43,7 @@ struct MainView: View {
 		let task = URLSession.shared.dataTask(with: request){ data, response, error in
 			if let error = error {
 				print("Error while fetching data:", error)
+				showAlert("Error fetching initial data")
 				return
 			}
 			guard let data = data else {
@@ -62,6 +64,7 @@ struct MainView: View {
 				
 			} catch let jsonError {
 				print("Failed to decode json", jsonError)
+				showAlert("Error decoding initial data")
 			}
 		}
 		
@@ -127,7 +130,6 @@ struct MainView: View {
 									indexOfItemToEdit = index
 								}
 								showEditView = true
-								
 							}) {
 								Label("Edit", systemImage: "pencil")
 							}
@@ -157,6 +159,14 @@ struct MainView: View {
 			.padding(30)
 			.font(.title)
 		}
+		.alert(alertText, isPresented: $showAlert) {
+			Button("OK", role: .cancel) { }
+}
+	}
+	func showAlert(_ text: String)
+	{
+		alertText = text
+		showAlert = true
 	}
 	func getForegroundColor(item: TodoItem) -> Color
 	{
@@ -165,8 +175,6 @@ struct MainView: View {
 	}
 	func getNextId() -> Int {
 		let nextId = ($todoItems.wrappedValue.map {$0.id}.max() ?? 1000) + 1
-		 
-		print("nextId = \(nextId)")
 		return nextId
 	}
 	func itemPassesFilter(item: TodoItem) -> Bool
