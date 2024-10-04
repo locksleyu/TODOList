@@ -40,8 +40,8 @@ struct EditView: View {
 						Text("Save")
 							.font(.headline)
 							.padding(20)
-						.disabled(disableSave)
 					}
+					.disabled(disableSave)
 					Spacer()
 					Button(action: {
 						showEditView = false
