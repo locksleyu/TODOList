@@ -498,6 +498,86 @@
             endingLineNumber = "82"
             landmarkName = "testRemoteItem()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F5EBB051-0F85-4559-901A-7F56641FD361 - 9e55d8270e7739e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODOListTests.TODOListTests.testRemoteItem() throws -&gt; ()"
+                  moduleName = "TODOListTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeffwi/TODOList/TODOListTests/TODOListTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "448">
+               </Location>
+               <Location
+                  uuid = "F5EBB051-0F85-4559-901A-7F56641FD361 - 9e55d8270e773a24"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODOListTests.TODOListTests.testRemoteItem() throws -&gt; ()"
+                  moduleName = "TODOListTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeffwi/TODOList/TODOListTests/TODOListTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "448">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "78F5BFD1-2C73-457D-98F2-5FA0FB30B593"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TODOListTests/TODOListTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "testUpdateCompleteState()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "78F5BFD1-2C73-457D-98F2-5FA0FB30B593 - 80199327db1e185"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODOListTests.TODOListTests.testUpdateCompleteState() throws -&gt; ()"
+                  moduleName = "TODOListTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeffwi/TODOList/TODOListTests/TODOListTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "590">
+               </Location>
+               <Location
+                  uuid = "78F5BFD1-2C73-457D-98F2-5FA0FB30B593 - 80199327db1e185"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODOListTests.TODOListTests.testUpdateCompleteState() throws -&gt; ()"
+                  moduleName = "TODOListTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeffwi/TODOList/TODOListTests/TODOListTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "678">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

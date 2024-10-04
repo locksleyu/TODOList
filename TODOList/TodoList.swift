@@ -38,7 +38,7 @@ struct TodoItemsLogic {
 	{
 		todoItems.removeAll() {$0.id == id}
 	}
-	static func updateCompleteStateOfItem(_ todoItems: inout [TodoItem], item: TodoItem)
+	static func toggleCompleteStateOfItem(_ todoItems: inout [TodoItem], item: TodoItem)
 	{
 		if let index = todoItems.firstIndex(of: item) {
 			todoItems[index].completed = !todoItems[index].completed;

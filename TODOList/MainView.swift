@@ -85,7 +85,7 @@ struct MainView: View {
 									showAddView = true;
 								}
 								else {
-									TodoItemsLogic.updateCompleteStateOfItem(&todoItems, item: item)
+									TodoItemsLogic.toggleCompleteStateOfItem(&todoItems, item: item)
 								}
 							})
 							.foregroundColor(getForegroundColor(item:item))

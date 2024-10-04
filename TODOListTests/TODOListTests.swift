@@ -86,18 +86,18 @@ final class TODOListTests: XCTestCase {
 		XCTAssert(todoItems.count == 0)
 	}
 	
-	func testUpdateCompleteState() throws {
+	func testToggleCompleteState() throws {
 		let item1 = TodoItem(userId: 1, id: 1, title: "item 1", completed: false)
 		let item2 = TodoItem.createAddItem()
 		
 		var todoItems: [TodoItem] = [item1, item2];
 
-		TodoItemsLogic.updateCompleteStateOfItem(&todoItems, item: item1)
+		TodoItemsLogic.toggleCompleteStateOfItem(&todoItems, item: todoItems[0])
 		
 		XCTAssert(todoItems.count == 2)
 		XCTAssert(todoItems[0].completed == true)
 		
-		TodoItemsLogic.updateCompleteStateOfItem(&todoItems, item: item1)
+		TodoItemsLogic.toggleCompleteStateOfItem(&todoItems, item: todoItems[0])
 		
 		XCTAssert(todoItems[0].completed == false)
 	}
@@ -106,24 +106,10 @@ final class TODOListTests: XCTestCase {
 		let item2 = TodoItem(userId: 1, id: 100, title: "item 2", completed: false)
 		let item3 = TodoItem.createAddItem()
 		
-		var todoItems: [TodoItem] = [item1, item2, item3];
+		let todoItems: [TodoItem] = [item1, item2, item3];
 
 		let nextId = TodoItemsLogic.getNextId(todoItems)
 		
 		XCTAssert(nextId == 101)
 	}
-/*
-	static func updateCompleteStateOfItem(_ todoItems: inout [TodoItem], item: TodoItem)
-	{
-		if let index = todoItems.firstIndex(of: item) {
-			todoItems[index].completed = !todoItems[index].completed;
-		}
-	}
-	 
-	static func getNextId(_ todoItems: [TodoItem]) -> Int {
-		let nextId = (todoItems.map {$0.id}.max() ?? 1000) + 1
-		return nextId
-	}
-	 */
-	
 }
