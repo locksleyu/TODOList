@@ -46,7 +46,10 @@ final class TODOListUITests: XCTestCase {
 		XCTAssert(app.buttons["Start"].waitForExistence(timeout: 3))
 	}
 	
-	func testAdd() throws {
+	// Note: if you have a problem with this test, please try to disable hardware keyboard in the simulator:
+	// Go to I/O -> Keyboard -> Uncheck "Connect Hardware Keyboard"
+	
+	func testAddAndDelete() throws {
 		let app = XCUIApplication()
 		app.launch()
 		
@@ -58,6 +61,8 @@ final class TODOListUITests: XCTestCase {
 		
 		let countBefore = app.buttons.matching(identifier: "ItemButton").count
 
+		// add item
+		
 		app.buttons["Add Item"].tap()
 		
 		XCTAssert(app.staticTexts["Add task"].waitForExistence(timeout: 3))
@@ -66,19 +71,27 @@ final class TODOListUITests: XCTestCase {
 		
 		app.textViews["AddTaskTextField"].tap()
 
-		app.textViews["AddTaskTextField"].typeText("myitem")
+		app.textViews["AddTaskTextField"].typeText("I") // TODO: fix intermittent issue with longer names getting garbled
 	
 		app.buttons["Save"].tap()
 		
 		let countAfter = app.buttons.matching(identifier: "ItemButton").count
-
-		displayElements()
 		
-		XCTAssert(app.buttons["myitem"].waitForExistence(timeout: 3))
+		XCTAssert(app.buttons["I"].waitForExistence(timeout: 3))
 
 		XCTAssert(countAfter == countBefore + 1)
 
+		// delete
 		
+		app.buttons["I"].swipeLeft(velocity: 1000) // full swipe to the left
+
+		let countAfterDelete = app.buttons.matching(identifier: "ItemButton").count
+
+		XCTAssert(countAfterDelete == countBefore)
+		
+		displayElements()
+		
+		XCTAssertFalse(app.buttons["I"].exists)
 	}
 
 	func displayElements() {
