@@ -145,7 +145,7 @@ struct MainView: View {
 		}
 		.alert(alertText, isPresented: $showAlert) {
 			Button("OK", role: .cancel) { }
-}
+		}
 	}
 	func showAlert(_ text: String)
 	{
@@ -166,7 +166,7 @@ struct MainView: View {
 			}
 		} else if (filterSelection == .completedTasks)
 		{
-			if ((item.isRegularItem())  && (item.completed == false)) {
+			if ((item.isRegularItem()) && (item.completed == false)) {
 				return false
 			}
 		}

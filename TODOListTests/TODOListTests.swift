@@ -18,26 +18,27 @@ final class TODOListTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-	
+	// In this test we will avoid doing much validation on the values since there is no guarantee they will not change later
+	// and we don't want a test to fail since someone changed the backend. So we will just do a minimum of checks to make sure
+	// we got some data.
 	func testFetchRemoteData() throws {
-		let mainView: MainView = MainView()
-		mainView.fetchRemoteData()
+		let expectation = XCTestExpectation(description: "fetch")
 		
+		TodoItemsLogic.fetchRemoteDataFromNetwork { todoItems, error in
+			guard (error == nil) else {
+				XCTFail("error is non nil")
+				return
+			}
+			if let todoItems = todoItems {
+				XCTAssert(todoItems.count >= 1)
+				expectation.fulfill()
+			}
+			else {
+				XCTFail("items is nil")
+			}
+		}
+		
+		wait(for: [expectation], timeout: 30.0)
 	}
 	
-
 }
