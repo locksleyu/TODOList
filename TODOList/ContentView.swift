@@ -105,6 +105,14 @@ struct ContentView: View {
 								}
 							})
 							.foregroundColor(getForegroundColor(item:item))
+							/*
+							.onTapGesture {}.onLongPressGesture(minimumDuration: 0.1) {
+								if let index = todoItems.firstIndex(of: item) {
+									indexOfItemToEdit = index
+								}
+								showEditView = true
+							}*/
+							
 						}
 						.listRowSeparator(.hidden)
 						.listRowBackground(
