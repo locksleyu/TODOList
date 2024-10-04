@@ -9,5 +9,8 @@ import Foundation
 
 // put all global configuration in here
 struct Configuration {
-	static let TODOItemsFetchURL = "https://jsonplaceholder.typicode.com/todos?userId=3"
+	static let TODOItemsFetchBaseURL = "https://jsonplaceholder.typicode.com/todos"
+	static let UserIDToFetch = 3
+	static let TODOItemsFetchFullURL = TODOItemsFetchBaseURL + "?userId=" + String(UserIDToFetch)
+
 }

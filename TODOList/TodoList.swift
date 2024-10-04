@@ -49,7 +49,7 @@ struct TodoItemsLogic {
 		return nextId
 	}
 	static func fetchRemoteDataFromNetwork(completionHandler: @escaping (_ todoItems: [TodoItem]?, _ error: Error?) -> ()) {
-		let url = URL(string: Configuration.TODOItemsFetchURL)!
+		let url = URL(string: Configuration.TODOItemsFetchFullURL)!
 		var request = URLRequest(url: url)
 		request.httpMethod = "GET"  // optional
 		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
