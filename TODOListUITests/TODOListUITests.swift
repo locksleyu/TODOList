@@ -22,6 +22,7 @@ final class TODOListUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+	/*
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
             // This measures how long it takes to launch your application.
@@ -30,13 +31,19 @@ final class TODOListUITests: XCTestCase {
             }
         }
     }
-
-	func testExample() throws {
-		// UI tests must launch the application that they test.
+*/
+	
+	func testBasicNavigation() throws {
 		let app = XCUIApplication()
 		app.launch()
+		
+		XCTAssert(app.staticTexts["TODO List Application Challenge"].exists)
 
-		// Use XCTAssert and related functions to verify your tests produce the correct results.
+		app.buttons["Start"].tap()
+
+		app.buttons["Back to home page"].tap()
+
+		XCTAssert(app.buttons["Start"].waitForExistence(timeout: 3))
 	}
 
 }

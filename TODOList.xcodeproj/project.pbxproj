@@ -124,9 +124,9 @@
 				6EAAD3D32CB0398F007C7E0A /* Configuration.swift */,
 				6EAAD3C12CAF5159007C7E0A /* EditView.swift */,
 				6EAAD3C52CAF5602007C7E0A /* AddView.swift */,
+				6E91D6FE2CAE3D180038E338 /* HomeView.swift */,
 				6E91D6D82CACB50D0038E338 /* Assets.xcassets */,
 				6E91D6DA2CACB50D0038E338 /* Preview Content */,
-				6E91D6FE2CAE3D180038E338 /* HomeView.swift */,
 			);
 			path = TODOList;
 			sourceTree = "<group>";
