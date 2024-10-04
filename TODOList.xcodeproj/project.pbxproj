@@ -21,6 +21,12 @@
 		6EAAD3C62CAF5602007C7E0A /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAD3C52CAF5602007C7E0A /* AddView.swift */; };
 		6EAAD3C72CAF5602007C7E0A /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAD3C52CAF5602007C7E0A /* AddView.swift */; };
 		6EAAD3C82CAF5602007C7E0A /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAD3C52CAF5602007C7E0A /* AddView.swift */; };
+		6EAAD3C92CB02F87007C7E0A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E91D6D62CACB50C0038E338 /* MainView.swift */; };
+		6EAAD3CA2CB02F8F007C7E0A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E91D6FE2CAE3D180038E338 /* HomeView.swift */; };
+		6EAAD3CB2CB02F94007C7E0A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E91D6D62CACB50C0038E338 /* MainView.swift */; };
+		6EAAD3CC2CB02F99007C7E0A /* TODOListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E91D6D42CACB50C0038E338 /* TODOListApp.swift */; };
+		6EAAD3CD2CB02FAF007C7E0A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E91D6FE2CAE3D180038E338 /* HomeView.swift */; };
+		6EAAD3CE2CB02FB4007C7E0A /* TODOListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E91D6D42CACB50C0038E338 /* TODOListApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,6 +288,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EAAD3CE2CB02FB4007C7E0A /* TODOListApp.swift in Sources */,
+				6EAAD3CA2CB02F8F007C7E0A /* HomeView.swift in Sources */,
+				6EAAD3C92CB02F87007C7E0A /* MainView.swift in Sources */,
 				6EAAD3C32CAF5159007C7E0A /* EditView.swift in Sources */,
 				6E91D6E62CACB50E0038E338 /* TODOListTests.swift in Sources */,
 				6EAAD3C72CAF5602007C7E0A /* AddView.swift in Sources */,
@@ -292,6 +301,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EAAD3CD2CB02FAF007C7E0A /* HomeView.swift in Sources */,
+				6EAAD3CC2CB02F99007C7E0A /* TODOListApp.swift in Sources */,
+				6EAAD3CB2CB02F94007C7E0A /* MainView.swift in Sources */,
 				6EAAD3C82CAF5602007C7E0A /* AddView.swift in Sources */,
 				6E91D6F22CACB50E0038E338 /* TODOListUITestsLaunchTests.swift in Sources */,
 				6E91D6F02CACB50E0038E338 /* TODOListUITests.swift in Sources */,
@@ -494,11 +506,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 29U9537Z44;
+				DEVELOPMENT_TEAM = QDNKSKP8AF;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jdw.TODOListTests;
+				PRODUCT_BUNDLE_IDENTIFIER = jdw.todoapp.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -514,11 +526,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 29U9537Z44;
+				DEVELOPMENT_TEAM = QDNKSKP8AF;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jdw.TODOListTests;
+				PRODUCT_BUNDLE_IDENTIFIER = jdw.todoapp.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -533,7 +545,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 29U9537Z44;
+				DEVELOPMENT_TEAM = QDNKSKP8AF;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jdw.TODOListUITests;
@@ -551,7 +563,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 29U9537Z44;
+				DEVELOPMENT_TEAM = QDNKSKP8AF;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jdw.TODOListUITests;

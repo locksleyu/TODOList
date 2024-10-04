@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  TODOList
 //
 //  Created by Jeffrey Wisgo on 10/1/24.
@@ -27,7 +27,7 @@ enum FilterOptions: String, Equatable, CaseIterable {
 }
 
 struct MainView: View {
-	@State private var todoItems: [TodoItem] = []
+	@State internal var todoItems: [TodoItem] = []
 	
 	@State private var showEditView: Bool = false
 	@State private var showAddView: Bool = false
@@ -39,7 +39,7 @@ struct MainView: View {
 	@State private var nextId: Int = 0
 	@State private var filterSelection: FilterOptions = .activeTasks
 	
-	private func fetchRemoteData() {
+	internal func fetchRemoteData() {
 		let url = URL(string: "https://jsonplaceholder.typicode.com/todos?userId=3")!
 		var request = URLRequest(url: url)
 		request.httpMethod = "GET"  // optional
@@ -48,7 +48,6 @@ struct MainView: View {
 			if let error = error {
 				print("Error while fetching data:", error)
 				showAlert("Error fetching initial data")
-				return
 			}
 			guard let data = data else {
 				return
@@ -99,6 +98,9 @@ struct MainView: View {
 							else {
 								Label("", systemImage:"plus").foregroundStyle(.gray)
 							}
+							
+							var _ = print("title = \(item.title), id = \(item.id)")
+							
 							Button(item.title, action: {
 								if (item.id == -1) { // add item
 									newItemTitle = ""

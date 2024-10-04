@@ -32,5 +32,12 @@ final class TODOListTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+	
+	func testFetchRemoteData() throws {
+		let mainView: MainView = MainView()
+		mainView.fetchRemoteData()
+		
+	}
+	
 
 }
