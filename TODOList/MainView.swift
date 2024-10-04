@@ -20,6 +20,24 @@ extension TodoItem: Equatable {
 	}
 }
 
+// note: in the future we could refactor to use this struct instead of a [TodoItem] structure in MainView
+struct TodoItemsLogic {
+	static func removeItemWithID(_ todoItems: inout [TodoItem], id: Int)
+	{
+		todoItems.removeAll() {$0.id == id}
+	}
+	static func updateCompleteStateOfItem(_ todoItems: inout [TodoItem], item: TodoItem)
+	{
+		if let index = todoItems.firstIndex(of: item) {
+			todoItems[index].completed = !todoItems[index].completed;
+		}
+	}
+	static func getNextId(_ todoItems: [TodoItem]) -> Int {
+		let nextId = (todoItems.map {$0.id}.max() ?? 1000) + 1
+		return nextId
+	}
+}
+
 enum FilterOptions: String, Equatable, CaseIterable {
 	case allTasks  		= "All Tasks"
 	case activeTasks	= "Active Tasks"
@@ -63,7 +81,7 @@ struct MainView: View {
 				}
 				// TODO: find a cleaner way to integrate this special item (merge Lists)
 				self.todoItems.append(TodoItem(userId: 0, id: -1, title: "Add task", completed: false))
-				self.nextId = getNextId()
+				self.nextId = TodoItemsLogic.getNextId(todoItems)
 				
 			} catch let jsonError {
 				print("Failed to decode json", jsonError)
@@ -107,7 +125,7 @@ struct MainView: View {
 									showAddView = true;
 								}
 								else {
-									updateCompleteStateOfItem(item: item)
+									TodoItemsLogic.updateCompleteStateOfItem(&todoItems, item: item)
 								}
 							})
 							.foregroundColor(getForegroundColor(item:item))
@@ -128,7 +146,7 @@ struct MainView: View {
 								})
 						.contentShape(Rectangle())
 						.swipeActions {
-							Button (action:{ removeItemWithID(id: item.id) }) {
+							Button (action:{ TodoItemsLogic.removeItemWithID(&todoItems, id: item.id) }) {
 								Label("Delete", systemImage: "minus.circle")
 							}
 							.tint(.red)
@@ -180,10 +198,7 @@ struct MainView: View {
 		if (item.id == -1) {return Color.gray}
 		else {return Color.black}
 	}
-	func getNextId() -> Int {
-		let nextId = ($todoItems.wrappedValue.map {$0.id}.max() ?? 1000) + 1
-		return nextId
-	}
+
 	func itemPassesFilter(item: TodoItem) -> Bool
 	{
 		if (filterSelection == .activeTasks)
@@ -199,16 +214,7 @@ struct MainView: View {
 		}
 		return true
 	}
-	func removeItemWithID(id: Int)
-	{
-		todoItems.removeAll() {$0.id == id}
-	}
-	func updateCompleteStateOfItem(item: TodoItem)
-	{
-		if let index = todoItems.firstIndex(of: item) {
-			todoItems[index].completed = !todoItems[index].completed;
-		}
-	}
+
 }
 
 struct ContentView_Previews: PreviewProvider {
