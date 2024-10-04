@@ -12,6 +12,11 @@ enum FilterOptions: String, Equatable, CaseIterable {
 	case allTasks  		= "All Tasks"
 	case activeTasks	= "Active Tasks"
 	case completedTasks	= "Completed Tasks"
+	
+	var localizedName: LocalizedStringKey {
+		LocalizedStringKey(rawValue)
+	}
+
 }
 
 struct MainView: View {
@@ -58,14 +63,13 @@ struct MainView: View {
 				showAlert("Error decoding initial data")
 			}
 		}
-		
 		task.resume()
 	}
 	var body: some View {
 		NavigationStack {
 			Picker("Filter", selection: $filterSelection) {
 				ForEach(FilterOptions.allCases, id: \.self) { value in // \.self is needed b/c enum doesn't confirm to Identifable
-					Text(value.rawValue)
+					Text(value.localizedName)
 					.tag(value)
 				}
 			}
@@ -111,7 +115,6 @@ struct MainView: View {
 						.listRowBackground(
 							Color(UIColor.secondarySystemGroupedBackground)
 								.overlay(alignment: .bottom) {
-									
 									Divider()
 								})
 						.contentShape(Rectangle())
