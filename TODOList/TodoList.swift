@@ -12,6 +12,18 @@ struct TodoItem: Codable, Identifiable {
 	let id: Int
 	var title: String
 	var completed: Bool
+	
+	public func isAddItem() -> Bool {
+		return (id == -1)
+	}
+	public func isRegularItem() -> Bool {
+		return (id != -1)
+	}
+	
+	public static func createAddItem() -> TodoItem
+	{
+		return TodoItem(userId: -1, id: -1, title: "Add Item", completed: false)
+	}
 }
 
 extension TodoItem: Equatable {
@@ -20,7 +32,7 @@ extension TodoItem: Equatable {
 	}
 }
 
-// note: in the future we could refactor to use this struct instead of a [TodoItem] structure in MainView
+// In the future we could refactor to use this struct instead of a [TodoItem] structure in MainView
 struct TodoItemsLogic {
 	static func removeItemWithID(_ todoItems: inout [TodoItem], id: Int)
 	{

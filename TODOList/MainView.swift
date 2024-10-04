@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 enum FilterOptions: String, Equatable, CaseIterable {
 	case allTasks  		= "All Tasks"
 	case activeTasks	= "Active Tasks"
@@ -49,7 +50,7 @@ struct MainView: View {
 					self.todoItems = Array(decodedData[0...4]) // TODO: change to 4 before submit!!
 				}
 				// TODO: find a cleaner way to integrate this special item (merge Lists)
-				self.todoItems.append(TodoItem(userId: 0, id: -1, title: "Add task", completed: false))
+				self.todoItems.append(TodoItem.createAddItem())
 				self.nextId = TodoItemsLogic.getNextId(todoItems)
 				
 			} catch let jsonError {
@@ -73,7 +74,7 @@ struct MainView: View {
 				ForEach ($todoItems) { $item in
 					if (itemPassesFilter(item: item)) {
 						HStack {
-							if($item.id != -1) {
+							if (item.isRegularItem()) {
 								var _ = print("id = \(item.id), completed = \($item.completed)")
 								if (item.completed) {
 									Label("", systemImage:"checkmark").foregroundStyle(.green)
@@ -89,7 +90,7 @@ struct MainView: View {
 							var _ = print("title = \(item.title), id = \(item.id)")
 							
 							Button(item.title, action: {
-								if (item.id == -1) { // add item
+								if (item.isAddItem()) { // add item
 									newItemTitle = ""
 									showAddView = true;
 								}
@@ -164,7 +165,7 @@ struct MainView: View {
 	}
 	func getForegroundColor(item: TodoItem) -> Color
 	{
-		if (item.id == -1) {return Color.gray}
+		if (item.isAddItem()) {return Color.gray}
 		else {return Color.black}
 	}
 
@@ -172,12 +173,12 @@ struct MainView: View {
 	{
 		if (filterSelection == .activeTasks)
 		{
-			if ((item.id != -1) && (item.completed == true)) {
+			if ((item.isRegularItem()) && (item.completed == true)) {
 				return false
 			}
 		} else if (filterSelection == .completedTasks)
 		{
-			if ((item.id != -1)  && (item.completed == false)) {
+			if ((item.isRegularItem())  && (item.completed == false)) {
 				return false
 			}
 		}
