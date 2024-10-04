@@ -127,15 +127,33 @@ final class TODOListUITests: XCTestCase {
 		
 		// edit
 		
-		app.buttons["I"].swipeRight(velocity: 1000)
+		app.buttons["I"].swipeRight(velocity: 100)
 		
 		displayElements()
 		
 		XCTAssert(app.buttons["xxx"].waitForExistence(timeout: 30))
+	}
+	
+	func testFilter() throws {
+		let app = XCUIApplication()
+		app.launch()
+		
+		XCTAssert(app.staticTexts["TODO List Application Challenge"].exists)
+		
+		app.buttons["Start"].tap()
+		
+		XCTAssert(app.buttons["Back to home page"].waitForExistence(timeout: 3))
+		
+		let countBefore = app.buttons.matching(identifier: "ItemButton").count
+				
+		app.buttons["FilterPicker"].tap()
+		
+		displayElements()
 
-
+		XCTAssert(app.buttons["Back to home xxx"].waitForExistence(timeout: 30))
 
 	}
+		
 	func displayElements() {
 		let app = XCUIApplication()
 
@@ -169,6 +187,19 @@ final class TODOListUITests: XCTestCase {
 		print("images:")
 
 		for item in app.images.allElementsBoundByIndex{
+			print("=>" + item.label + "," + item.title + "," + item.identifier )
+		}
+		
+		print("pickers:")
+
+		for item in app.pickers.allElementsBoundByIndex{
+			print("=>" + item.label + "," + item.title + "," + item.identifier )
+		}
+		
+		
+		print("picker wheels:")
+
+		for item in app.pickerWheels.allElementsBoundByIndex{
 			print("=>" + item.label + "," + item.title + "," + item.identifier )
 		}
 		

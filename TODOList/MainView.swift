@@ -59,6 +59,7 @@ struct MainView: View {
 				ForEach(FilterOptions.allCases, id: \.self) { value in // \.self is needed b/c enum doesn't confirm to Identifable
 					Text(value.localizedName)
 					.tag(value)
+					.accessibilityIdentifier("FilterPicker")
 				}
 			}
 			.pickerStyle(.menu)
@@ -121,9 +122,9 @@ struct MainView: View {
 								Label("Edit", systemImage: "pencil")
 							}
 							.tint(.blue)
-							.accessibilityIdentifier("SwipeEdit")
+							.accessibilityIdentifier("SwipeLeft")
 						}
-						.swipeActions(edge: .leading) {
+						.swipeActions(edge: .leading) { // swipe right
 							Button (action:{
 								if let index = todoItems.firstIndex(of: item) {
 									indexOfItemToEdit = index
@@ -133,7 +134,7 @@ struct MainView: View {
 								Label("Edit", systemImage: "pencil")
 							}
 							.tint(.blue)
-							.accessibilityIdentifier("SwipeEdit")
+							.accessibilityIdentifier("SwipeRight")
 						}
 					}
 				}
