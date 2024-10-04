@@ -90,6 +90,7 @@ struct MainView: View {
 									TodoItemsLogic.toggleCompleteStateOfItem(&todoItems, item: item)
 								}
 							})
+							.accessibilityIdentifier("ItemButton")
 							.foregroundColor(getForegroundColor(item:item))
 							/*
 							.onTapGesture {}.onLongPressGesture(minimumDuration: 0.1) {

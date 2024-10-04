@@ -46,7 +46,7 @@ final class TODOListUITests: XCTestCase {
 		XCTAssert(app.buttons["Start"].waitForExistence(timeout: 3))
 	}
 	
-	func testAddDelete() throws {
+	func testAdd() throws {
 		let app = XCUIApplication()
 		app.launch()
 		
@@ -55,8 +55,9 @@ final class TODOListUITests: XCTestCase {
 		app.buttons["Start"].tap()
 
 		XCTAssert(app.buttons["Back to home page"].waitForExistence(timeout: 3))
-		//let currentCount =
 		
+		let countBefore = app.buttons.matching(identifier: "ItemButton").count
+
 		app.buttons["Add Item"].tap()
 		
 		XCTAssert(app.staticTexts["Add task"].waitForExistence(timeout: 3))
@@ -65,11 +66,24 @@ final class TODOListUITests: XCTestCase {
 		
 		app.textViews["AddTaskTextField"].tap()
 
-		app.textViews["AddTaskTextField"].typeText("new item!")
+		app.textViews["AddTaskTextField"].typeText("myitem")
 	
+		app.buttons["Save"].tap()
+		
+		let countAfter = app.buttons.matching(identifier: "ItemButton").count
+
+		displayElements()
+		
+		XCTAssert(app.buttons["myitem"].waitForExistence(timeout: 3))
+
+		XCTAssert(countAfter == countBefore + 1)
+
+		
 	}
 
 	func displayElements() {
+		let app = XCUIApplication()
+
 		print("text fields:")
 		
 		for item in app.textFields.allElementsBoundByIndex{
