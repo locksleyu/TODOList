@@ -21,6 +21,7 @@ struct AddView: View {
 					.padding(30)
 					.padding(.top, 40)
 					.background(Color.gray)
+					.accessibilityIdentifier("AddTaskTextField")
 				Spacer()
 				Spacer()
 			}

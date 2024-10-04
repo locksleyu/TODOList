@@ -512,7 +512,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
             endingLineNumber = "99"
-            landmarkName = "testUpdateCompleteState()"
+            landmarkName = "testToggleCompleteState()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -546,6 +546,100 @@
                   offsetFromSymbolStart = "678">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "997E3609-AB06-43A0-B164-B3111DB059A1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TODOListUITests/TODOListUITests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "testAddDelete()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "997E3609-AB06-43A0-B164-B3111DB059A1 - 320ea8a34dd39d9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODOListUITests.TODOListUITests.testAddDelete() throws -&gt; ()"
+                  moduleName = "TODOListUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeffwi/TODOList/TODOListUITests/TODOListUITests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "3634">
+               </Location>
+               <Location
+                  uuid = "997E3609-AB06-43A0-B164-B3111DB059A1 - 320ea8a34dd39e34"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODOListUITests.TODOListUITests.testAddDelete() throws -&gt; ()"
+                  moduleName = "TODOListUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeffwi/TODOList/TODOListUITests/TODOListUITests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "4087">
+               </Location>
+               <Location
+                  uuid = "997E3609-AB06-43A0-B164-B3111DB059A1 - 320ea8a34dd39f2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODOListUITests.TODOListUITests.testAddDelete() throws -&gt; ()"
+                  moduleName = "TODOListUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeffwi/TODOList/TODOListUITests/TODOListUITests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "5209">
+               </Location>
+               <Location
+                  uuid = "997E3609-AB06-43A0-B164-B3111DB059A1 - 320ea8a34dd39fee"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODOListUITests.TODOListUITests.testAddDelete() throws -&gt; ()"
+                  moduleName = "TODOListUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeffwi/TODOList/TODOListUITests/TODOListUITests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "5444">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "703360A1-A32C-4FF3-B659-8C6796D1AB98"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TODOListUITests/TODOListUITests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "testAddDelete()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
