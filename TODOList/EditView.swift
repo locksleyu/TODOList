@@ -13,7 +13,7 @@ struct EditView: View {
 	@Binding var indexOfItemToEdit: Int
 
 	@State var originalTitle: String
-
+	@State var disableSave: Bool = true
 	var body: some View {
 		ZStack(alignment: .center) {
 			VStack {
@@ -22,6 +22,9 @@ struct EditView: View {
 					.padding(30)
 					.padding(.top, 40)
 					.background(Color.gray)
+					.onChange(of: todoItems[indexOfItemToEdit].title) { newValue in
+						disableSave = (newValue == originalTitle)
+					}
 				Spacer()
 				Spacer()
 			}
@@ -37,7 +40,7 @@ struct EditView: View {
 						Text("Save")
 							.font(.headline)
 							.padding(20)
-						//.disabled(newItemTitle == "")
+						.disabled(disableSave)
 					}
 					Spacer()
 					Button(action: {
