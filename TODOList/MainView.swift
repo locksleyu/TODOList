@@ -206,4 +206,3 @@ struct MainView_Previews: PreviewProvider {
 		MainView_PreviewsContainer()
 	}
 }
-

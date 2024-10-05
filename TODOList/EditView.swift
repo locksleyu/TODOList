@@ -21,6 +21,7 @@ struct EditView: View {
 				TextField("EditItem", text: $todoItems[indexOfItemToEdit].title, axis: .vertical)
 					.padding(30)
 					.padding(.top, 40)
+					.font(.body)
 					.background(Color.gray)
 					.onChange(of: todoItems[indexOfItemToEdit].title) { newValue in
 						disableSave = (newValue == originalTitle)
