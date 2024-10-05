@@ -108,33 +108,39 @@ struct MainView: View {
 									Divider()
 								})
 						.contentShape(Rectangle())
+						
 						.swipeActions(edge: .trailing) { // swipe left
-							Button (action:{ TodoItemsLogic.removeItemWithID(&todoItems, id: item.id) }) {
-								Label("Delete", systemImage: "minus.circle")
-							}
-							.tint(.red)
-							Button (action:{
-								if let index = todoItems.firstIndex(of: item) {
-									indexOfItemToEdit = index
+							if (item.isRegularItem()) {
+								Button (action:{ TodoItemsLogic.removeItemWithID(&todoItems, id: item.id) }) {
+									Label("Delete", systemImage: "minus.circle")
 								}
-								showEditView = true
-							}) {
-								Label("Edit", systemImage: "pencil")
+								.tint(.red)
+								Button (action:{
+									if let index = todoItems.firstIndex(of: item) {
+										indexOfItemToEdit = index
+									}
+									showEditView = true
+								}) {
+									Label("Edit", systemImage: "pencil")
+								}
+								.tint(.blue)
+								.accessibilityIdentifier("SwipeLeft")
 							}
-							.tint(.blue)
-							.accessibilityIdentifier("SwipeLeft")
 						}
 						.swipeActions(edge: .leading) { // swipe right
-							Button (action:{
-								if let index = todoItems.firstIndex(of: item) {
-									indexOfItemToEdit = index
+							if (item.isRegularItem()) {
+								
+								Button (action:{
+									if let index = todoItems.firstIndex(of: item) {
+										indexOfItemToEdit = index
+									}
+									showEditView = true
+								}) {
+									Label("Edit", systemImage: "pencil")
 								}
-								showEditView = true
-							}) {
-								Label("Edit", systemImage: "pencil")
+								.tint(.blue)
+								.accessibilityIdentifier("SwipeRight")
 							}
-							.tint(.blue)
-							.accessibilityIdentifier("SwipeRight")
 						}
 					}
 				}
