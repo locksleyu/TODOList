@@ -20,6 +20,7 @@ struct AddView: View {
 				TextField("Add task details here", text: $newItemTitle, axis: .vertical)
 					.padding(30)
 					.padding(.top, 40)
+					.font(.body)
 					.background(Color.gray)
 					.accessibilityIdentifier("AddTaskTextField")
 				Spacer()

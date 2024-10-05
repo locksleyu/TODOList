@@ -65,7 +65,7 @@ final class TODOListUITests: XCTestCase {
 		
 		app.buttons["Add Item"].tap()
 		
-		XCTAssert(app.staticTexts["Add task"].waitForExistence(timeout: 3))
+		XCTAssert(app.staticTexts["Add item"].waitForExistence(timeout: 3))
 		
 		XCTAssert(app.textViews["AddTaskTextField"].waitForExistence(timeout: 3))
 		
@@ -109,7 +109,7 @@ final class TODOListUITests: XCTestCase {
 		
 		app.buttons["Add Item"].tap()
 		
-		XCTAssert(app.staticTexts["Add task"].waitForExistence(timeout: 3))
+		XCTAssert(app.staticTexts["Add item"].waitForExistence(timeout: 3))
 		
 		XCTAssert(app.textViews["AddTaskTextField"].waitForExistence(timeout: 3))
 		
