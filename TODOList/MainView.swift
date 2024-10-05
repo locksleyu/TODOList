@@ -70,7 +70,7 @@ struct MainView: View {
 							if (item.isRegularItem()) {
 								var _ = print("id = \(item.id), completed = \($item.completed)")
 								if (item.completed) {
-									Label("", systemImage:"checkmark").foregroundStyle(.green)
+									Label("", systemImage:"checkmark").foregroundStyle(.green).bold()
 								}
 								else {
 									Label("", systemImage:"checkmark").foregroundStyle(.gray)
