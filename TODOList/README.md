@@ -9,9 +9,10 @@ TODO List Application Challenge
 Ths application is run much like any other iOS based app:
 - Pull down the source from Github
 - Install XCode, configure an Apple ID in Preferences->Accounts
+- Open the TODOList.xcodeproj project in XCode (double click on it in Finder is sufficient)
 - Choose either a simulator or physical target in the dropdown in the top center (to the right of the app name)
   - If physical device, plug in the device via USB cable (to any other configuration as needed such as adding the device to the account)
-- Run via Product->Run (⌘ R)
+- Run the app via Product->Run (⌘ R)
 
 
 2) A brief overview of the app architecture
