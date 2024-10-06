@@ -18,6 +18,7 @@ enum FilterOptions: String, Equatable, CaseIterable {
 }
 
 struct MainView: View {
+	@Environment(\.colorScheme) var colorScheme
 	@State internal var todoItems: [TodoItem] = []
 	
 	@Binding var showingMain: Bool
@@ -101,7 +102,7 @@ struct MainView: View {
 							})
 							.buttonStyle(.plain)
 							.accessibilityIdentifier("ItemButton")
-							.foregroundColor(getForegroundColor(item:item))
+							.foregroundColor(getForegroundColor(item:item, colorScheme: colorScheme))
 							.swipeActions(edge: .trailing) { // swipe left
 								if (item.isRegularItem()) {
 									Button (action:{ TodoItemsLogic.removeItemWithID(&todoItems, id: item.id) }) {
@@ -180,10 +181,10 @@ struct MainView: View {
 		alertText = text
 		showAlert = true
 	}
-	func getForegroundColor(item: TodoItem) -> Color
+	func getForegroundColor(item: TodoItem, colorScheme: ColorScheme) -> Color
 	{
-		if (item.isAddItem()) {return Color.gray}
-		else {return Color.black}
+		if (item.isAddItem()) {return (colorScheme == .light) ? Color.gray : Color.gray}
+		else {return (colorScheme == .light) ? Color.black : Color.white}
 	}
 	func itemPassesFilter(item: TodoItem) -> Bool
 	{
