@@ -31,7 +31,7 @@ struct MainView: View {
 	@State private var indexOfItemToEdit: Int = 0
 	@State private var newItemTitle: String = ""
 	@State private var nextId: Int = 0
-	@State private var filterSelection: FilterOptions = .activeTasks
+	@State private var filterSelection: FilterOptions = .allTasks // TODO: .activeTasks
 	
 	internal func fetchRemoteData() {
 		TodoItemsLogic.fetchRemoteDataFromNetwork { todoItems, error in
@@ -67,39 +67,73 @@ struct MainView: View {
 				ForEach ($todoItems) { $item in
 					if (itemPassesFilter(item: item)) {
 						HStack {
-							if (item.isRegularItem()) {
-								var _ = print("id = \(item.id), completed = \($item.completed)")
-								if (item.completed) {
-									Label("", systemImage:"checkmark").foregroundStyle(.green).bold()
+							Button  {
+								TodoItemsLogic.toggleCompleteStateOfItem(&todoItems, item: item)
+
+							} label: {
+								if (item.isRegularItem()) {
+									if (item.completed) {
+										Label("", systemImage:"checkmark").foregroundStyle(.green).bold()
+									}
+									else {
+										Label("", systemImage:"checkmark").foregroundStyle(.gray)
+									}
 								}
 								else {
-									Label("", systemImage:"checkmark").foregroundStyle(.gray)
+									Label("", systemImage:"plus").foregroundStyle(.gray)
 								}
+								
 							}
-							else {
-								Label("", systemImage:"plus").foregroundStyle(.gray)
-							}
-							
-							var _ = print("title = \(item.title), id = \(item.id)")
-							
+							.buttonStyle(.borderless)
+
 							Button(item.title, action: {
-								if (item.isAddItem()) { // add item
-									newItemTitle = ""
-									showAddView = true;
-								}
-								else {
-									TodoItemsLogic.toggleCompleteStateOfItem(&todoItems, item: item)
+								if (item.isRegularItem()) {
+										if let index = todoItems.firstIndex(of: item) {
+											indexOfItemToEdit = index
+										}
+										showEditView = true
+							
+									//.tint(.blue)
 								}
 							})
+							.buttonStyle(.plain)
 							.accessibilityIdentifier("ItemButton")
 							.foregroundColor(getForegroundColor(item:item))
-							/*
-							.onTapGesture {}.onLongPressGesture(minimumDuration: 0.1) {
-								if let index = todoItems.firstIndex(of: item) {
-									indexOfItemToEdit = index
+							.swipeActions(edge: .trailing) { // swipe left
+								if (item.isRegularItem()) {
+									Button (action:{ TodoItemsLogic.removeItemWithID(&todoItems, id: item.id) }) {
+										Label("Delete", systemImage: "minus.circle")
+									}
+									.tint(.red)
+									/*
+									Button (action:{
+										if let index = todoItems.firstIndex(of: item) {
+											indexOfItemToEdit = index
+										}
+										showEditView = true
+									}) {
+										Label("Edit", systemImage: "pencil")
+									}
+									.tint(.blue)
+									.accessibilityIdentifier("SwipeLeft")
+									 */
 								}
-								showEditView = true
-							}*/
+							}
+							.swipeActions(edge: .leading) { // swipe right
+								if (item.isRegularItem()) {
+									Button (action:{
+										if let index = todoItems.firstIndex(of: item) {
+											indexOfItemToEdit = index
+										}
+										showEditView = true
+									}) {
+										Label("Edit", systemImage: "pencil")
+									}
+									.tint(.blue)
+									.accessibilityIdentifier("SwipeRight")
+								}
+							 
+							}
 						}
 						.listRowSeparator(.hidden)
 						.listRowBackground(
@@ -109,39 +143,6 @@ struct MainView: View {
 								})
 						.contentShape(Rectangle())
 						
-						.swipeActions(edge: .trailing) { // swipe left
-							if (item.isRegularItem()) {
-								Button (action:{ TodoItemsLogic.removeItemWithID(&todoItems, id: item.id) }) {
-									Label("Delete", systemImage: "minus.circle")
-								}
-								.tint(.red)
-								Button (action:{
-									if let index = todoItems.firstIndex(of: item) {
-										indexOfItemToEdit = index
-									}
-									showEditView = true
-								}) {
-									Label("Edit", systemImage: "pencil")
-								}
-								.tint(.blue)
-								.accessibilityIdentifier("SwipeLeft")
-							}
-						}
-						.swipeActions(edge: .leading) { // swipe right
-							if (item.isRegularItem()) {
-								
-								Button (action:{
-									if let index = todoItems.firstIndex(of: item) {
-										indexOfItemToEdit = index
-									}
-									showEditView = true
-								}) {
-									Label("Edit", systemImage: "pencil")
-								}
-								.tint(.blue)
-								.accessibilityIdentifier("SwipeRight")
-							}
-						}
 					}
 				}
 				.clipShape(RoundedRectangle(cornerRadius: 0.0, style: .continuous))
