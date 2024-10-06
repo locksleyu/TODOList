@@ -79,6 +79,59 @@ final class TODOListUITests: XCTestCase {
 	}
 	
 	
+	func testAddAndEdit() throws {
+		let app = XCUIApplication()
+		app.launch()
+		
+		XCTAssert(app.staticTexts["TODO List Application Challenge"].exists)
+		
+		app.buttons["Start"].tap()
+		
+		XCTAssert(app.buttons["Back to home page"].waitForExistence(timeout: 3))
+		
+		let countBefore = app.buttons.matching(identifier: "ItemButton").count
+		
+		// add item
+		
+		app.buttons["Add task"].tap()
+		
+		XCTAssert(app.staticTexts["Add task"].waitForExistence(timeout: 3))
+		
+		XCTAssert(app.textViews["AddTaskTextField"].waitForExistence(timeout: 3))
+		
+		app.textViews["AddTaskTextField"].tap()
+		
+		app.textViews["AddTaskTextField"].typeText("I") // TODO: fix intermittent issue with longer names getting garbled
+		
+		app.buttons["Save"].tap()
+		
+		let countAfterAdd = app.buttons.matching(identifier: "ItemButton").count
+		
+		XCTAssert(app.buttons["I"].waitForExistence(timeout: 3))
+		
+		XCTAssert(countAfterAdd == countBefore + 1)
+		
+		// edit
+		
+		app.buttons["I"].tap()
+		
+		XCTAssert(app.textViews["EditTaskTextField"].waitForExistence(timeout: 3))
+		
+		app.textViews["EditTaskTextField"].tap()
+		
+		app.textViews["EditTaskTextField"].typeText("2") // TODO: fix intermittent issue with longer names getting garbled
+		
+		app.buttons["Save"].tap()
+		
+		let countAfterEdit = app.buttons.matching(identifier: "ItemButton").count
+				
+		XCTAssert(countAfterAdd == countAfterEdit)
+		
+		XCTAssert(app.buttons["I2"].waitForExistence(timeout: 3))
+
+	}
+	
+	
 	func testAddAndDelete() throws {
 		let app = XCUIApplication()
 		app.launch()
@@ -111,24 +164,17 @@ final class TODOListUITests: XCTestCase {
 		
 		XCTAssert(countAfter == countBefore + 1)
 		
-		// edit
-		
-		// doesn't work for some reason, so use workaround
-		//app.buttons["I"].gentleSwipe(.right)
+		// delete
 		
 		app.buttons["I"].tap()
-		
 					
 		XCTAssert(app.buttons["Delete Task"].waitForExistence(timeout: 3))
 		
 		app.buttons["Delete Task"].tap()
 
 		let countAfterDelete = app.buttons.matching(identifier: "ItemButton").count
-		
-//		XCTAssert(app.buttons["I"].waitForExistence(timeout: 3))
-		
+				
 		XCTAssert(countAfterDelete == countBefore)
-
 	}
 	
 	// for now, just do basic validation based on fetched data as-is

@@ -26,7 +26,7 @@ struct EditView: View {
 					.onChange(of: todoItems[indexOfItemToEdit].title) { newValue in
 						disableSave = (newValue == originalTitle)
 					}
-					.accessibilityIdentifier("EditItem")
+					.accessibilityIdentifier("EditTaskTextField")
 				Spacer()
 				Spacer()
 			}
