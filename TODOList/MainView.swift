@@ -95,6 +95,9 @@ struct MainView: View {
 							
 									//.tint(.blue)
 								}
+								else {
+									showAddView = true
+								}
 							})
 							.buttonStyle(.plain)
 							.accessibilityIdentifier("ItemButton")

@@ -60,7 +60,7 @@ struct EditView: View {
 					TodoItemsLogic.removeItemWithID(&todoItems, id: todoItems[indexOfItemToEdit].id)
 					showEditView = false
 				}) {
-					Text("Delete Item")
+					Text("Delete Task")
 						.font(.headline)
 						.padding(20)
 						.tint(.red)

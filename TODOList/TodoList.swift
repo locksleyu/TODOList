@@ -22,7 +22,7 @@ struct TodoItem: Codable, Identifiable {
 	
 	public static func createAddItem() -> TodoItem
 	{
-		return TodoItem(userId: -1, id: -1, title: "Add Item", completed: false)
+		return TodoItem(userId: -1, id: -1, title: "Add task", completed: false)
 	}
 }
 

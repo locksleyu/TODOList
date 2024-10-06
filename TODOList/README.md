@@ -21,7 +21,7 @@ The app is divided up into 4 views, with a file for each view:
 - HomeView: The initial view that is shown ("home page") that contains information about the app. It has a Start button to jump to the main page
 - MainView: The main view of the app that shows all of the TODO items and has a filter picker for showing all tasks, completed tasks, or active tasks. 
 - EditView: The view used to edit an item. Trigged by the MainView via a left swpie and choosing the "edit" item
-- AddView: The view used to add a new item. Triggered by the MainView via the "Add item" option.
+- AddView: The view used to add a new item. Triggered by the MainView via the "Add task" option.
 
 There are also two other files of note:
 
@@ -43,7 +43,7 @@ Eventually a list of test cases will appear in the top left. Passed tests are re
 This app is intended to demonstrate overall coding ability, and is missing some things that should be done before actually releasing on the App store. Here is a list of some of those things:
 
 - Add persistence to the data so it doesn't go away when the app is restarted
-- Internationalization of strings ("Add item" etc.) into common languages
+- Internationalization of strings ("Add task" etc.) into common languages
 - The UX is functional, but could be improved. For example, the actions for editing and removing an element could be rethought.
 - Link to the app's webpage.
 - User assistance (in the form of text, screenshots, and short videos) should be added to show how to use the app initially.

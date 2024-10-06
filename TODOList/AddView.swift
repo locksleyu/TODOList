@@ -27,7 +27,7 @@ struct AddView: View {
 				Spacer()
 			}
 			VStack(alignment: .center) {
-				Text("Add item").padding(30).bold()
+				Text("Add task").padding(30).bold()
 				Spacer()
 			}
 			VStack {
