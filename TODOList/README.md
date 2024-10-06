@@ -6,6 +6,13 @@ TODO List Application Challenge
 
 1) Instructions on how to set up and run your application locally
 
+Ths application is run much like any other iOS based app:
+- Pull down the source from Github
+- Install XCode, configure an Apple ID in Preferences->Accounts
+- Choose either a simulator or physical target in the dropdown in the top center (to the right of the app name)
+  - If physical device, plug in the device via USB cable (to any other configuration as needed such as adding the device to the account)
+- Run via Product->Run (⌘ R)
+
 
 2) A brief overview of the app architecture
 
@@ -20,7 +27,7 @@ There are also two other files of note:
 - TodoList.swift: contains TodoItem, the struct that represents a single Todo Item, and TodoItemsLogic, a set of logic for acting upon the Todo items
 - Configuration: contains the URL for which data is initially fetched. Other global constants could be added to this in the future.
  
-  
-
-
 3) Guidelines on how to run and validate tests
+
+TODO
+
