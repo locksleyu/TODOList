@@ -56,6 +56,15 @@ struct EditView: View {
 				}
 				.padding(5)
 				Spacer()
+				Button(action: {
+					TodoItemsLogic.removeItemWithID(&todoItems, id: todoItems[indexOfItemToEdit].id)
+					showEditView = false
+				}) {
+					Text("Delete Item")
+						.font(.headline)
+						.padding(20)
+						.tint(.red)
+				}
 			}
 		}
 	}
