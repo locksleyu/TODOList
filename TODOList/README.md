@@ -30,5 +30,25 @@ There are also two other files of note:
  
 3) Guidelines on how to run and validate tests
 
-TODO
+- Select Product->Test (⌘ U) to run the entire suite of tests on the simulator
+- To run a specific test, click on the diamond next to the test function name (all tests begin with test...())
+  - unit tests: TODOListTests/TODOListTests.swift
+  - UI tests: TODOListUITests/TODOListUITests.swift
+  
+Eventually a list of test cases will appear in the top left. Passed tests are represented by a green check, and failed ones by a red X. A spinner will be shown for tests that are still processing.
+
+
+4) Other notes:
+
+This app is intended to demonstrate overall coding ability, and is missing some things that should be done before actually releasing on the App store. Here is a list of some of those things:
+
+- Add persistence to the data so it doesn't go away when the app is restarted
+- Internationalization of strings ("Add item" etc.) into common languages
+- The UX is functional, but could be improved. For example, the actions for editing and removing an element could be rethought.
+- Link to the app's webpage.
+- User assistance (in the form of text, screenshots, and short videos) should be added to show how to use the app initially.
+- The UX design could be improved to be more pleasing.
+- Optional: Analytics to show how the users are using the app (could use something like Mixpanel). This should of course have a clear opt-out.
+
+Note: as there are many existing TODO apps in the Apple app store, in order to make this app competitive there is a bunch of functionality that should be added, including creative functionality that other apps don't have.
 
