@@ -33,7 +33,9 @@ The app is divided up into 4 views, with a file for each view:
 There are also two other files of note:
 
 - TodoList.swift: contains TodoItem, the struct that represents a single Todo Item, and TodoItemsLogic, a set of logic for acting upon the Todo items
-- Configuration: contains the URL for which data is initially fetched. Other global constants could be added to this in the future.
+- Configuration.swift: contains a few global constants, for example the URL for which data is initially fetched. Other global constants could be added to this in the future.
+
+* NOTE: Because of the relatively simple design and functionality implemented, a fullblown MVC pattern (or the like) was not implemented. Rather, separating the logic from the UI felt sufficient enough for this purpose. However, for a more complex design it would make sense to move to something like MVC, and also factor out other pieces into separate views (in separate files), for example a List item view. 
 
 3) Guidelines on how to run and validate tests
 
