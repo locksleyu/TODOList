@@ -13,26 +13,35 @@ import SwiftUI
 struct HomeView: View {
 	@State var showingMain = false
     var body: some View {
-		VStack {
-			Text("TODO List")
-			.padding(10)
-			.font(.title)
-			Text("Application Challenge")
-			.padding(10)
-			.font(.title)
-			Button("Start")
-			{
-				showingMain = true
+		HStack {
+			Spacer()
+			VStack {
+				Spacer()
+				Text("TODO List")
+					.padding(10)
+					.font(.title)
+				Text("Application Challenge")
+					.padding(10)
+					.font(.title)
+				Button("Start")
+				{
+					showingMain = true
+				}
+				.fullScreenCover(isPresented: $showingMain) {
+					MainView(showingMain: $showingMain)
+				}
+				.padding(30)
+				.font(.largeTitle)
+				.buttonStyle(.borderedProminent)
+				Text("by: Jeffrey Wisgo")
+					.font(.headline)
+				Spacer()
 			}
-			.fullScreenCover(isPresented: $showingMain) {
-				MainView(showingMain: $showingMain)
-			}
-			.padding(30)
-			.font(.largeTitle)
-			.buttonStyle(.borderedProminent)
-			Text("by: Jeffrey Wisgo")
-				.font(.headline)
+			Spacer()
 		}
+		.background(
+			LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
+		)
     }
 }
 
