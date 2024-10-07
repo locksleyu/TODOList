@@ -12,5 +12,5 @@ struct Configuration {
 	static private let TODOItemsFetchBaseURL = "https://jsonplaceholder.typicode.com/todos"
 	static private let UserIDToFetch = 3
 	static let TODOItemsFetchFullURL = TODOItemsFetchBaseURL + "?userId=" + String(UserIDToFetch)
-
+	static let MaxFetchedItems = 5
 }
