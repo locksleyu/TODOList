@@ -29,7 +29,7 @@ struct HomeView: View {
 			}
 			.padding(30)
 			.font(.largeTitle)
-
+			.buttonStyle(.borderedProminent)
 			Text("by: Jeffrey Wisgo")
 				.font(.headline)
 		}
