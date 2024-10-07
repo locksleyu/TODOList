@@ -98,7 +98,7 @@ struct MainView: View {
 							}
 							.buttonStyle(.borderless)
 
-							Button(item.title, action: {
+							Button(action: {
 								if (item.isRegularItem()) {
 										if let index = todoItems.firstIndex(of: item) {
 											indexOfItemToEdit = index
@@ -108,8 +108,19 @@ struct MainView: View {
 								else {
 									showAddView = true
 								}
-							})
-							.buttonStyle(.plain)
+							}) {
+								HStack {
+									Text(item.title)
+										//.frame(maxWidth: .infinity)
+										//.multilineTextAlignment(.leading)
+									Spacer()
+								}
+							}
+							
+							//.frame(maxWidth: .infinity)
+							//.fixedSize(horizontal: true, vertical: false)
+							//.tint(.blue)
+							.buttonStyle(.borderless)
 							.accessibilityIdentifier("ItemButton")
 							.foregroundColor(getForegroundColor(item:item, colorScheme: colorScheme))
 							.swipeActions(edge: .trailing) { // swipe left
@@ -157,6 +168,7 @@ struct MainView: View {
 								}
 							}
 						}
+						//.fixedSize()
 						.listRowSeparator(.hidden)
 						.listRowBackground(
 							Color(UIColor.secondarySystemGroupedBackground)
