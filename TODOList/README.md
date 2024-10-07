@@ -41,8 +41,8 @@ There are also two other files of note:
 - To run a specific test, click on the diamond next to the test function name (all tests begin with test...())
   - unit tests: TODOListTests/TODOListTests.swift
   - UI tests: TODOListUITests/TODOListUITests.swift
-  
-Eventually a list of test cases will appear in the top left. Passed tests are represented by a green check, and failed ones by a red X. A spinner will be shown for tests that are still processing.
+- A list of test cases should appear in the top left (if it doesn't, you can open the Test Navigator by clicking the check-in-a-diamond icon in the top left)
+- Passed tests are represented by a green check, and failed ones by a red X. A spinner will be shown for tests that are still processing.
 
 
 4) Other notes:
