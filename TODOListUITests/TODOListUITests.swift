@@ -101,7 +101,7 @@ final class TODOListUITests: XCTestCase {
 		
 		app.textViews["AddTaskTextField"].tap()
 		
-		app.textViews["AddTaskTextField"].typeText("I") // TODO: fix intermittent issue with longer names getting garbled
+		app.textViews["AddTaskTextField"].typeText("I") // Simulator has issue where names get garbled sometimes. For now, use a short name to get around that.
 		
 		app.buttons["Save"].tap()
 		
@@ -119,7 +119,7 @@ final class TODOListUITests: XCTestCase {
 		
 		app.textViews["EditTaskTextField"].tap()
 		
-		app.textViews["EditTaskTextField"].typeText("2") // TODO: fix intermittent issue with longer names getting garbled
+		app.textViews["EditTaskTextField"].typeText("2")
 		
 		app.buttons["Save"].tap()
 		
@@ -154,7 +154,7 @@ final class TODOListUITests: XCTestCase {
 		
 		app.textViews["AddTaskTextField"].tap()
 		
-		app.textViews["AddTaskTextField"].typeText("I") // TODO: fix intermittent issue with longer names getting garbled
+		app.textViews["AddTaskTextField"].typeText("I") // Simulator has issue where names get garbled sometimes. For now, use a short name to get around that.
 		
 		app.buttons["Save"].tap()
 		

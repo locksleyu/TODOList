@@ -51,7 +51,6 @@ struct MainView: View {
 				else {
 					self.todoItems = Array(todoItems[0...Configuration.MaxFetchedItems-1])
 				}
-				// TODO: consider finding a cleaner way to integrate this special item (merge Lists)
 				self.todoItems.append(TodoItem.createAddItem())
 				self.nextId = TodoItemsLogic.getNextId(todoItems)
 				
