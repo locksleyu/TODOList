@@ -42,13 +42,13 @@ struct MainView: View {
 			}
 			if let todoItems = todoItems {
 				// get only 5 items at most
-				if ( todoItems.count <= 5) { // TODO: change to 5 before submit!!
+				if ( todoItems.count <= 5) {
 					self.todoItems = todoItems
 				}
 				else {
-					self.todoItems = Array(todoItems[0...4]) // TODO: change to 4 before submit!!
+					self.todoItems = Array(todoItems[0...4])
 				}
-				// TODO: find a cleaner way to integrate this special item (merge Lists)
+				// TODO: consider finding a cleaner way to integrate this special item (merge Lists)
 				self.todoItems.append(TodoItem.createAddItem())
 				self.nextId = TodoItemsLogic.getNextId(todoItems)
 			}
