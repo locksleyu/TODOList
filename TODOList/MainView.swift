@@ -111,15 +111,10 @@ struct MainView: View {
 							}) {
 								HStack {
 									Text(item.title)
-										//.frame(maxWidth: .infinity)
-										//.multilineTextAlignment(.leading)
+										.multilineTextAlignment(.leading)
 									Spacer()
 								}
 							}
-							
-							//.frame(maxWidth: .infinity)
-							//.fixedSize(horizontal: true, vertical: false)
-							//.tint(.blue)
 							.buttonStyle(.borderless)
 							.accessibilityIdentifier("ItemButton")
 							.foregroundColor(getForegroundColor(item:item, colorScheme: colorScheme))
@@ -168,7 +163,6 @@ struct MainView: View {
 								}
 							}
 						}
-						//.fixedSize()
 						.listRowSeparator(.hidden)
 						.listRowBackground(
 							Color(UIColor.secondarySystemGroupedBackground)
