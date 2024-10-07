@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AddView: View {
+	@Environment(\.colorScheme) var colorScheme
+
 	@Binding var todoItems: [TodoItem]
 	@Binding var showAddView: Bool
 	@Binding var newItemTitle: String
@@ -21,7 +23,8 @@ struct AddView: View {
 					.padding(30)
 					.padding(.top, 40)
 					.font(.body)
-					.background(Color.gray)
+					.foregroundColor(getForegroundColor(colorScheme: colorScheme))
+					.background(getBackgroundColor(colorScheme: colorScheme))
 					.accessibilityIdentifier("AddTaskTextField")
 				Spacer()
 				Spacer()
@@ -58,6 +61,16 @@ struct AddView: View {
 				Spacer()
 			}
 		}
+	}
+	func getBackgroundColor(colorScheme: ColorScheme) -> Color
+	{
+		if (colorScheme == .dark) {return Color(red: 0.3, green: 0.3, blue: 0.3)}
+		else {return Color(red: 0.7, green: 0.7, blue: 0.7)}
+	}
+	func getForegroundColor(colorScheme: ColorScheme) -> Color
+	{
+		if (colorScheme == .dark) {return .white}
+		else {return .black}
 	}
 }
 

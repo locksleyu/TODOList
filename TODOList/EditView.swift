@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct EditView: View {
+	@Environment(\.colorScheme) var colorScheme
+	
 	@Binding var todoItems: [TodoItem]
 	@Binding var showEditView: Bool
 	@Binding var indexOfItemToEdit: Int
@@ -22,7 +24,7 @@ struct EditView: View {
 					.padding(30)
 					.padding(.top, 40)
 					.font(.body)
-					.background(Color.gray)
+					.background(getBackgroundColor(colorScheme: colorScheme))
 					.onChange(of: todoItems[indexOfItemToEdit].title) { newValue in
 						disableSave = (newValue == originalTitle)
 					}
@@ -68,7 +70,12 @@ struct EditView: View {
 			}
 		}
 	}
-	
+	func getBackgroundColor(colorScheme: ColorScheme) -> Color
+	{
+		if (colorScheme == .dark) {return Color(red: 0.3, green: 0.3, blue: 0.3)}
+		else {return Color(red: 0.7, green: 0.7, blue: 0.7)}
+	}
+
 	struct EditView_PreviewsContainer: View {
 		@State var todoItems: [TodoItem] = [TodoItem(userId: 1, id: 1, title: "test", completed: false)]
 		@State var showEditView: Bool = false
