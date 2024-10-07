@@ -69,8 +69,12 @@ struct MainView: View {
 					if (itemPassesFilter(item: item)) {
 						HStack {
 							Button  {
-								TodoItemsLogic.toggleCompleteStateOfItem(&todoItems, item: item)
-
+								if (item.isRegularItem()) {
+									TodoItemsLogic.toggleCompleteStateOfItem(&todoItems, item: item)
+								}
+								else {
+									showAddView = true
+								}
 							} label: {
 								if (item.isRegularItem()) {
 									if (item.completed) {
@@ -93,8 +97,6 @@ struct MainView: View {
 											indexOfItemToEdit = index
 										}
 										showEditView = true
-							
-									//.tint(.blue)
 								}
 								else {
 									showAddView = true

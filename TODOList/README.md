@@ -14,6 +14,13 @@ Ths application is run much like any other iOS based app:
   - If physical device, plug in the device via USB cable (to any other configuration as needed such as adding the device to the account)
 - Run the app via Product->Run (⌘ R)
 
+Intructions to run the app via TestFlight:
+- Ask Jeff to add you to the internal testers whitelist (email to locksleyu@gmail.com)
+- Download TestFlight app on your iOS device from the app store. 
+- Login to TestFlight with the email you asked to be added.
+- You should receive an email "Jeffrey Wisgo has invited you to test TODO List App!"
+- Click on that email on your iOS device, it will direct you to the TestFlight app.
+- You should now see the app in the TestFlight app, click on it to install, then run it as normal.
 
 2) A brief overview of the app architecture
 
@@ -29,6 +36,7 @@ There are also two other files of note:
 - Configuration: contains the URL for which data is initially fetched. Other global constants could be added to this in the future.
 
 3) Guidelines on how to run and validate tests
+
 
 - Select Product->Test (⌘ U) to run the entire suite of tests on the simulator
 - To run a specific test, click on the diamond next to the test function name (all tests begin with test...())

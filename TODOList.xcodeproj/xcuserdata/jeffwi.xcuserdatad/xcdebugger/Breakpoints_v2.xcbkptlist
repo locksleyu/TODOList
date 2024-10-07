@@ -529,6 +529,21 @@
                   endingLineNumber = "100"
                   offsetFromSymbolStart = "678">
                </Location>
+               <Location
+                  uuid = "78F5BFD1-2C73-457D-98F2-5FA0FB30B593 - 6562546f31c96980"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODOListTests.TODOListTests.testToggleCompleteState() throws -&gt; ()"
+                  moduleName = "TODOListTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeffwi/TODOList/TODOListTests/TODOListTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "678">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -641,6 +656,21 @@
                   endingLineNumber = "162"
                   offsetFromSymbolStart = "2130">
                </Location>
+               <Location
+                  uuid = "E4F7A54A-E647-4E71-BE3C-47D793C9516D - 561a7e3ead6ccd04"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODOListUITests.TODOListUITests.testFilter() throws -&gt; ()"
+                  moduleName = "TODOListUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeffwi/TODOList/TODOListUITests/TODOListUITests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "205"
+                  endingLineNumber = "205"
+                  offsetFromSymbolStart = "2120">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -654,8 +684,8 @@
             filePath = "TODOList/MainView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
