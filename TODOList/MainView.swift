@@ -21,6 +21,8 @@ struct MainView: View {
 	@Environment(\.colorScheme) var colorScheme
 	@State internal var todoItems: [TodoItem] = []
 	
+	@State internal var enabledItems: [Int: Bool] = [:]
+
 	@Binding var showingMain: Bool
 
 	@State private var showEditView: Bool = false
@@ -51,6 +53,10 @@ struct MainView: View {
 				// TODO: consider finding a cleaner way to integrate this special item (merge Lists)
 				self.todoItems.append(TodoItem.createAddItem())
 				self.nextId = TodoItemsLogic.getNextId(todoItems)
+				
+				self.todoItems.forEach { item in
+					enabledItems[item.id] = true
+				}
 			}
 		}
 	}
@@ -107,7 +113,15 @@ struct MainView: View {
 							.foregroundColor(getForegroundColor(item:item, colorScheme: colorScheme))
 							.swipeActions(edge: .trailing) { // swipe left
 								if (item.isRegularItem()) {
-									Button (action:{ TodoItemsLogic.removeItemWithID(&todoItems, id: item.id) }) {
+									Button (action:{
+										withAnimation(.linear(duration: 0.5)) {
+											enabledItems[item.id] = false
+										}
+										// Note: for iOS 17+ we could just use completion:
+										DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+											TodoItemsLogic.removeItemWithID(&todoItems, id: item.id)
+										}
+									}) {
 										Label("Delete", systemImage: "minus.circle")
 									}
 									.tint(.red)
@@ -138,7 +152,6 @@ struct MainView: View {
 									.tint(.blue)
 									.accessibilityIdentifier("SwipeRight")
 								}
-							 
 							}
 						}
 						.listRowSeparator(.hidden)
@@ -148,7 +161,7 @@ struct MainView: View {
 									Divider()
 								})
 						.contentShape(Rectangle())
-						
+						.opacity((enabledItems[item.id] ?? true) ? 1.0 : 0.0)
 					}
 				}
 				.clipShape(RoundedRectangle(cornerRadius: 0.0, style: .continuous))

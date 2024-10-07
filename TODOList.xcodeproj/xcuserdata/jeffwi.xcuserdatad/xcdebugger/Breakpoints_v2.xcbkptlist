@@ -142,8 +142,8 @@
             filePath = "TODOList/TodoList.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "fetchRemoteDataFromNetwork(completionHandler:)"
             landmarkType = "7">
             <Locations>
@@ -190,8 +190,8 @@
             filePath = "TODOList/TodoList.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "fetchRemoteDataFromNetwork(completionHandler:)"
             landmarkType = "7">
             <Locations>
@@ -238,8 +238,8 @@
             filePath = "TODOList/TodoList.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "fetchRemoteDataFromNetwork(completionHandler:)"
             landmarkType = "7">
             <Locations>
@@ -286,8 +286,8 @@
             filePath = "TODOList/TodoList.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "fetchRemoteDataFromNetwork(completionHandler:)"
             landmarkType = "7">
             <Locations>
@@ -334,8 +334,8 @@
             filePath = "TODOList/TodoList.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "fetchRemoteDataFromNetwork(completionHandler:)"
             landmarkType = "7">
             <Locations>
@@ -382,8 +382,8 @@
             filePath = "TODOList/MainView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "fetchRemoteData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -392,48 +392,16 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9BACCA50-8B34-43C8-8D2A-B2D381A21A63"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TODOList/MainView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "fetchRemoteData()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9BACCA50-8B34-43C8-8D2A-B2D381A21A63 - 7dc93c91aa2ef7c1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;TODOList.TodoItem&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in TODOList.MainView.fetchRemoteData() -&gt; ()"
-                  moduleName = "TODOList"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jeffwi/TODOList/TODOList/MainView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "207">
-               </Location>
-               <Location
-                  uuid = "9BACCA50-8B34-43C8-8D2A-B2D381A21A63 - 7dc93c91aa2ef7c1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;TODOList.TodoItem&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in TODOList.MainView.fetchRemoteData() -&gt; ()"
-                  moduleName = "TODOList"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jeffwi/TODOList/TODOList/MainView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "241">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -557,42 +525,10 @@
             filePath = "TODOList/TodoList.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "removeItemWithID(_:id:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FF5DA030-7C59-4363-B34D-4436C70F3A8A - 57296aae6f915574"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static TODOList.TodoItemsLogic.removeItemWithID(_: inout Swift.Array&lt;TODOList.TodoItem&gt;, id: Swift.Int) -&gt; ()"
-                  moduleName = "TODOList"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jeffwi/TODOList/TODOList/TodoList.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "48">
-               </Location>
-               <Location
-                  uuid = "FF5DA030-7C59-4363-B34D-4436C70F3A8A - a2ab880d799ef89f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (TODOList.TodoItem) -&gt; Swift.Bool in static TODOList.TodoItemsLogic.removeItemWithID(_: inout Swift.Array&lt;TODOList.TodoItem&gt;, id: Swift.Int) -&gt; ()"
-                  moduleName = "TODOList"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jeffwi/TODOList/TODOList/TodoList.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -677,22 +613,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8EF443B1-B178-4E05-86A4-426354F051D1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TODOList/MainView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "37E62072-6027-42D4-941D-5951451A2954"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -703,6 +623,54 @@
             startingLineNumber = "72"
             endingLineNumber = "72"
             landmarkName = "getForegroundColor(colorScheme:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA1B4900-A341-4578-8DF3-337DD06DB9B1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TODOList/MainView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "fetchRemoteData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DFF0A9D6-B181-4530-A9BF-2D53D38FD830"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TODOList/MainView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "fetchRemoteData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D9D611C1-C5B2-49BC-80C6-AE61752B0B82"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TODOList/MainView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "fetchRemoteData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
