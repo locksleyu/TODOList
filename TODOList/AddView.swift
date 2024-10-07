@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// View that is used to add a new item.
+
 struct AddView: View {
 	@Environment(\.colorScheme) var colorScheme
 

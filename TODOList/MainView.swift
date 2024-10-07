@@ -17,10 +17,12 @@ enum FilterOptions: String, Equatable, CaseIterable {
 	}
 }
 
+// Main view that shows elements and allows adding or deleting. The top has a picker to allow
+// sorting by All Tasks, etc.
+
 struct MainView: View {
 	@Environment(\.colorScheme) var colorScheme
 	@State internal var todoItems: [TodoItem] = []
-	
 	@State internal var enabledItems: [Int: Bool] = [:]
 
 	@Binding var showingMain: Bool
@@ -43,7 +45,6 @@ struct MainView: View {
 				return;
 			}
 			if let todoItems = todoItems {
-				// get only 5 items at most
 				if ( todoItems.count <= Configuration.MaxFetchedItems) {
 					self.todoItems = todoItems
 				}

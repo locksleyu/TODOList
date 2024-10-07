@@ -5,6 +5,8 @@
 //  Created by Jeffrey Wisgo on 10/4/24.
 //
 
+// This file contains objects and logic related to TODO items that have been abstracted away from the UI code.
+
 import Foundation
 
 struct TodoItem: Codable, Identifiable {

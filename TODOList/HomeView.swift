@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+// View that is shown with the app first loads. Shows basic information about the app and allows jumping into
+// the main view via a button.
+
 struct HomeView: View {
 	@State var showingMain = false
     var body: some View {

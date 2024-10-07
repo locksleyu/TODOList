@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// View that shows existing text of an item and allows editing it, as well as deletion.
+
 struct EditView: View {
 	@Environment(\.colorScheme) var colorScheme
 	
