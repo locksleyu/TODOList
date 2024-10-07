@@ -49,13 +49,13 @@ Eventually a list of test cases will appear in the top left. Passed tests are re
 
 This app is intended to demonstrate overall coding ability, and is missing some things that should be done before actually releasing on the App store. Here is a list of some of those things:
 
-- Add persistence to the data so it doesn't go away when the app is restarted
+- Add persistence to the data so it doesn't go away when the app is restarted.
   (I considered adding basic persistence, but it was not obvious how to integrate the URL-fetched data with modified data)
 - Internationalization of strings ("Add task" etc.) into common languages
 - Link to the app's webpage.
-- User assistance (in the form of text, screenshots, and short videos) should be added to show how to use the app initially.
+- User assistance (in the form of text, screenshots, and short videos) could be added to show how to use the app initially.
 - Some sound effects (like when deleting or adding an item) to improve usability.
-- The UX design could be improved to be more pleasing.
+- The UX design could be improved to be more pleasing (Also, a separate design should be considered for iPhone vs. iPad)
 - Optional: Analytics to show how the users are using the app (could use something like Mixpanel). This should of course have a clear opt-out.
 
 Note: as there are many existing TODO apps in the Apple app store, in order to make this app competitive there is a bunch of functionality that should be added, including creative functionality that other apps don't have.
