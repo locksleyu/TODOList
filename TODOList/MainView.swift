@@ -127,6 +127,8 @@ struct MainView: View {
 									}
 									.tint(.red)
 									/*
+									// Design option: allow edit from left swipe
+									 
 									Button (action:{
 										if let index = todoItems.firstIndex(of: item) {
 											indexOfItemToEdit = index
@@ -162,7 +164,7 @@ struct MainView: View {
 									Divider()
 								})
 						.contentShape(Rectangle())
-						.opacity((enabledItems[item.id] ?? true) ? 1.0 : 0.0)
+						.opacity((enabledItems[item.id] ?? true) ? 1.0 : 0.0) // used to animation deletion from swipe
 					}
 				}
 				.clipShape(RoundedRectangle(cornerRadius: 0.0, style: .continuous))
