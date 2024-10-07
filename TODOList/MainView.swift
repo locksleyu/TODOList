@@ -179,7 +179,6 @@ struct MainView: View {
 			Button("Back to home page")
 			{
 				showingMain = false
-				//showHome = true
 			}
 			.fullScreenCover(isPresented: $showHome) {
 				HomeView()

@@ -37,7 +37,6 @@ There are also two other files of note:
 
 3) Guidelines on how to run and validate tests
 
-
 - Select Product->Test (⌘ U) to run the entire suite of tests on the simulator
 - To run a specific test, click on the diamond next to the test function name (all tests begin with test...())
   - unit tests: TODOListTests/TODOListTests.swift
@@ -55,6 +54,7 @@ This app is intended to demonstrate overall coding ability, and is missing some 
 - Internationalization of strings ("Add task" etc.) into common languages
 - Link to the app's webpage.
 - User assistance (in the form of text, screenshots, and short videos) should be added to show how to use the app initially.
+- Some sound effects (like when deleting or adding an item) to improve usability.
 - The UX design could be improved to be more pleasing.
 - Optional: Analytics to show how the users are using the app (could use something like Mixpanel). This should of course have a clear opt-out.
 

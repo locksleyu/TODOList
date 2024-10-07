@@ -20,12 +20,16 @@ struct AddView: View {
 			VStack {
 				Spacer()
 				TextField("Add task details here", text: $newItemTitle, axis: .vertical)
-					.padding(30)
-					.padding(.top, 40)
+					.padding(20)
 					.font(.body)
 					.foregroundColor(getForegroundColor(colorScheme: colorScheme))
 					.background(getBackgroundColor(colorScheme: colorScheme))
 					.accessibilityIdentifier("AddTaskTextField")
+					.overlay(
+						Rectangle()
+						.stroke(Color.white)
+						.padding(10)
+					)
 				Spacer()
 				Spacer()
 			}

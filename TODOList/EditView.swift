@@ -21,14 +21,18 @@ struct EditView: View {
 			VStack {
 				Spacer()
 				TextField("EditItem", text: $todoItems[indexOfItemToEdit].title, axis: .vertical)
-					.padding(30)
-					.padding(.top, 40)
+					.padding(20)
 					.font(.body)
 					.background(getBackgroundColor(colorScheme: colorScheme))
 					.onChange(of: todoItems[indexOfItemToEdit].title) { newValue in
 						disableSave = (newValue == originalTitle)
 					}
 					.accessibilityIdentifier("EditTaskTextField")
+					.overlay(
+						Rectangle()
+						.stroke(Color.white)
+						.padding(10)
+					)
 				Spacer()
 				Spacer()
 			}
