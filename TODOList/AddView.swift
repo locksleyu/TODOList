@@ -28,7 +28,7 @@ struct AddView: View {
 					.overlay(
 						Rectangle()
 						.stroke(Color.white)
-						.padding(10)
+						.padding(0)
 					)
 				Spacer()
 				Spacer()
@@ -69,7 +69,7 @@ struct AddView: View {
 	func getBackgroundColor(colorScheme: ColorScheme) -> Color
 	{
 		if (colorScheme == .dark) {return Color(red: 0.3, green: 0.3, blue: 0.3)}
-		else {return Color(red: 0.7, green: 0.7, blue: 0.7)}
+		else {return Color(red: 0.8, green: 0.8, blue: 0.8)}
 	}
 	func getForegroundColor(colorScheme: ColorScheme) -> Color
 	{
