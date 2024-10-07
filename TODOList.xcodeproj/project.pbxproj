@@ -33,7 +33,7 @@
 		6EAAD3D42CB0398F007C7E0A /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAD3D32CB0398F007C7E0A /* Configuration.swift */; };
 		6EAAD3D52CB0398F007C7E0A /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAD3D32CB0398F007C7E0A /* Configuration.swift */; };
 		6EAAD3D62CB0398F007C7E0A /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAD3D32CB0398F007C7E0A /* Configuration.swift */; };
-		6EAAD3D82CB2E791007C7E0A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6EAAD3D72CB2E790007C7E0A /* README.md */; };
+		6EAAD3DA2CB4615B007C7E0A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6EAAD3D92CB4615B007C7E0A /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +69,7 @@
 		6EAAD3C52CAF5602007C7E0A /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		6EAAD3CF2CB034E1007C7E0A /* TodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 		6EAAD3D32CB0398F007C7E0A /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		6EAAD3D72CB2E790007C7E0A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6EAAD3D92CB4615B007C7E0A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +120,7 @@
 		6E91D6D32CACB50C0038E338 /* TODOList */ = {
 			isa = PBXGroup;
 			children = (
+				6EAAD3D92CB4615B007C7E0A /* README.md */,
 				6E91D6D42CACB50C0038E338 /* TODOListApp.swift */,
 				6EAAD3CF2CB034E1007C7E0A /* TodoList.swift */,
 				6E91D6D62CACB50C0038E338 /* MainView.swift */,
@@ -129,7 +130,6 @@
 				6E91D6FE2CAE3D180038E338 /* HomeView.swift */,
 				6E91D6D82CACB50D0038E338 /* Assets.xcassets */,
 				6E91D6DA2CACB50D0038E338 /* Preview Content */,
-				6EAAD3D72CB2E790007C7E0A /* README.md */,
 			);
 			path = TODOList;
 			sourceTree = "<group>";
@@ -263,7 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EAAD3D82CB2E791007C7E0A /* README.md in Resources */,
+				6EAAD3DA2CB4615B007C7E0A /* README.md in Resources */,
 				6E91D6DC2CACB50D0038E338 /* Preview Assets.xcassets in Resources */,
 				6E91D6D92CACB50D0038E338 /* Assets.xcassets in Resources */,
 			);
