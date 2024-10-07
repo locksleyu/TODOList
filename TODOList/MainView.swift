@@ -32,7 +32,7 @@ struct MainView: View {
 	@State private var indexOfItemToEdit: Int = 0
 	@State private var newItemTitle: String = ""
 	@State private var nextId: Int = 0
-	@State private var filterSelection: FilterOptions = .allTasks // TODO: .activeTasks
+	@State private var filterSelection: FilterOptions = .activeTasks
 	
 	internal func fetchRemoteData() {
 		TodoItemsLogic.fetchRemoteDataFromNetwork { todoItems, error in
