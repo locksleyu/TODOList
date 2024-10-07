@@ -52,7 +52,7 @@ struct TodoItemsLogic {
 	static func fetchRemoteDataFromNetwork(completionHandler: @escaping (_ todoItems: [TodoItem]?, _ error: Error?) -> ()) {
 		let url = URL(string: Configuration.TODOItemsFetchFullURL)!
 		var request = URLRequest(url: url)
-		request.httpMethod = "GET"  // optional
+		request.httpMethod = "GET"
 		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 		let task = URLSession.shared.dataTask(with: request){ data, response, error in
 			if let error = error {
@@ -67,7 +67,7 @@ struct TodoItemsLogic {
 				completionHandler(decodedData, nil)
 			} catch let jsonError {
 				print("Failed to decode json", jsonError)
-				completionHandler(nil, NSError(domain: "", code: 100, userInfo: [ NSLocalizedDescriptionKey: "Error decoding data"]))
+				completionHandler(nil, NSError(domain: "", code: 101, userInfo: [ NSLocalizedDescriptionKey: "Error decoding data"]))
 			}
 		}
 		task.resume()
