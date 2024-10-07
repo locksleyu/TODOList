@@ -192,7 +192,7 @@ struct MainView: View {
 			.fullScreenCover(isPresented: $showHome) {
 				HomeView()
 			}
-			.padding(30)
+			.padding(5)
 			.font(.title)
 		}
 		.alert(alertText, isPresented: $showAlert) {
@@ -237,5 +237,6 @@ struct MainView_PreviewsContainer: View {
 struct MainView_Previews: PreviewProvider {
 	static var previews: some View {
 		MainView_PreviewsContainer()
+			//.previewInterfaceOrientation(.landscapeLeft)
 	}
 }
