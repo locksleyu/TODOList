@@ -33,6 +33,14 @@ struct AddView: View {
 			VStack {
 				HStack {
 					Button(action: {
+						showAddView = false
+					}) {
+						Text("Cancel")
+							.font(.headline)
+							.padding(20)
+					}
+					Spacer()
+					Button(action: {
 						if (newItemTitle != "") {
 							let newItem = TodoItem(userId: 3, id: nextId, title: newItemTitle, completed: false)
 							todoItems.insert(newItem, at: todoItems.count-1)
@@ -44,14 +52,6 @@ struct AddView: View {
 							.font(.headline)
 							.padding(20)
 							.disabled(newItemTitle == "")
-					}
-					Spacer()
-					Button(action: {
-						showAddView = false
-					}) {
-						Text("Cancel")
-							.font(.headline)
-							.padding(20)
 					}
 				}
 				.padding(5)

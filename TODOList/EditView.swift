@@ -38,21 +38,21 @@ struct EditView: View {
 				HStack {
 					Button(action: {
 						showEditView = false
-					}) {
-						Text("Save")
-							.font(.headline)
-							.padding(20)
-					}
-					.disabled(disableSave)
-					Spacer()
-					Button(action: {
-						showEditView = false
 						todoItems[indexOfItemToEdit].title = originalTitle
 					}) {
 						Text("Cancel")
 							.font(.headline)
 							.padding(20)
 					}
+					Spacer()
+					Button(action: {
+						showEditView = false
+					}) {
+						Text("Save")
+							.font(.headline)
+							.padding(20)
+					}
+					.disabled(disableSave)
 				}
 				.padding(5)
 				Spacer()
