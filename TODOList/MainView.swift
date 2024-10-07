@@ -80,6 +80,7 @@ struct MainView: View {
 									TodoItemsLogic.toggleCompleteStateOfItem(&todoItems, item: item)
 								}
 								else {
+									newItemTitle = ""
 									showAddView = true
 								}
 							} label: {
@@ -106,6 +107,7 @@ struct MainView: View {
 										showEditView = true
 								}
 								else {
+									newItemTitle = ""
 									showAddView = true
 								}
 							}) {
