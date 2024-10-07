@@ -8,21 +8,22 @@
 import Foundation
 
 struct TodoItem: Codable, Identifiable {
+	static private let AddItemID: Int = -1
 	let userId: Int
 	let id: Int
 	var title: String
 	var completed: Bool
 	
 	public func isAddItem() -> Bool {
-		return (id == -1)
+		return (id == TodoItem.AddItemID)
 	}
 	public func isRegularItem() -> Bool {
-		return (id != -1)
+		return (id != TodoItem.AddItemID)
 	}
 	
 	public static func createAddItem() -> TodoItem
 	{
-		return TodoItem(userId: -1, id: -1, title: "Add task", completed: false)
+		return TodoItem(userId: -1, id: AddItemID, title: "Add task", completed: false)
 	}
 }
 
