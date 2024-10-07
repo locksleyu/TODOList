@@ -11,10 +11,12 @@ struct HomeView: View {
 	@State var showingMain = false
     var body: some View {
 		VStack {
-			Text("TODO List Application Challenge")
-			.padding(20)
-			.font(.headline)
-			
+			Text("TODO List")
+			.padding(10)
+			.font(.title)
+			Text("Application Challenge")
+			.padding(10)
+			.font(.title)
 			Button("Start")
 			{
 				showingMain = true
@@ -26,7 +28,7 @@ struct HomeView: View {
 			.font(.largeTitle)
 
 			Text("by: Jeffrey Wisgo")
-				.font(.footnote)
+				.font(.headline)
 		}
     }
 }
