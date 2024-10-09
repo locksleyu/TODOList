@@ -1,3 +1,4 @@
+Note: this project was done as part of the interview process of a certain company. While it isn't anything especially complicated, it is a good demonstration of my overall app-creating ability. The entire thing was done in under a week, including unit tests, UI tests, and pushing to TestFlight.
 
 Mobile App Engineer Challenge: iOS Development
 (TODO List Application Challenge)
